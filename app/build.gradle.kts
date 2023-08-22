@@ -64,6 +64,7 @@ dependencies {
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
+    implementation(libs.androidx.material3.window.size)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -92,4 +93,6 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.androidx.room.paging)
     implementation(libs.androidx.ui.text.google.fonts)
+    implementation(libs.msz.progress.indicator)
+    implementation(libs.accompanist.systemuicontroller)
 }
