@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">SwiftPay</string>
+    <string name="send_money_desc">Say goodbye costly fees and complicated processes. Let\'s get started on simplifying your international transactions!</string>
+    <string name="send_money">Send Money Across Borders With Ease</string>
+    <string name="safe_secure">Safe and Secure Transactions</string>
+    <string name="safe_secure_desc">Your financial data is encrypted and stored securely, ensuring that your money is in safe hands.</string>
+    <string name="manage_track">Manage and Track Your Money in One Place</string>
+    <string name="manage_track_desc">Need to send money urgently? No Problem! With SwiftPay, you can transfer funds quickly an conveniently, even on the go.</string>
+    <string name="get_started_desc">Let\'s Get Started</string>
+    <string name="with_swift_pay">With SwiftPay, sending and receiving money is easier than ever before.</string>
+    <string name="sign_in">Sign in</string>
+    <string name="get_started">Get Started</string>
+    <string name="sign_up">Sign up</string>
 </resources>

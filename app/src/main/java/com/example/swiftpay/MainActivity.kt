@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.swiftpay.ui.screens.splash.SplashScreen
+import com.example.swiftpay.ui.screens.walkthrough.OnboardingScreen
 import com.example.swiftpay.ui.theme.SwiftPayTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             SwiftPayTheme {
                 // A surface container using the 'background' color from the theme
-                SplashScreen()
+                OnboardingScreen()
             }
         }
     }
