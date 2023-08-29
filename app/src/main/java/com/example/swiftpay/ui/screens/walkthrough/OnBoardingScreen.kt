@@ -39,15 +39,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.input.key.Key.Companion.D
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.theme.BlueGrey11
 import com.example.swiftpay.ui.theme.Green67
 import com.example.swiftpay.ui.theme.Grey62
 import com.example.swiftpay.ui.theme.SwiftPayTheme
+import com.example.swiftpay.ui.theme.White
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -66,8 +69,10 @@ fun OnboardingScreen() {
     SideEffect {
         systemUiController.setSystemBarsColor(
             color = Green67,
-            darkIcons = useDarkIcons,
-            isNavigationBarContrastEnforced = false
+            darkIcons = useDarkIcons
+        )
+        systemUiController.setNavigationBarColor(
+            color = if (useDarkIcons) White else BlueGrey11
         )
     }
 
@@ -186,7 +191,8 @@ fun OnboardingPager(
                             ) {
                                 OutlinedButton(
                                     onClick = { },
-                                    modifier = Modifier.weight(1f),
+                                    modifier = Modifier.weight(1f)
+                                        .height(50.dp),
                                     border = BorderStroke(1.dp, MaterialTheme.colorScheme.onPrimary)
                                 ) {
                                     Text(
@@ -209,7 +215,8 @@ fun OnboardingPager(
                                             }
                                         }
                                     },
-                                    modifier = Modifier.weight(1f),
+                                    modifier = Modifier.weight(1f)
+                                        .height(50.dp),
                                     colors = ButtonDefaults.buttonColors(
                                         containerColor = MaterialTheme.colorScheme.onPrimary
                                     )
@@ -234,7 +241,8 @@ fun OnboardingPager(
                             ) {
                                 Button(
                                     onClick = { },
-                                    modifier = Modifier.fillMaxWidth(1f),
+                                    modifier = Modifier.fillMaxWidth(1f)
+                                        .height(50.dp),
                                     colors = ButtonDefaults.buttonColors(
                                         containerColor = MaterialTheme.colorScheme.onPrimary
                                     )

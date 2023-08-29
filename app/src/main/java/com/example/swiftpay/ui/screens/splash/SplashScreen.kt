@@ -75,7 +75,6 @@ fun SplashScreen() {
 
                 Text(
                     text = stringResource(id = R.string.app_name),
-                    fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onSecondary,
                     fontSize = 30.sp,
                     style = MaterialTheme.typography.titleLarge

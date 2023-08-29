@@ -14,6 +14,8 @@ val Green67 = Color(0xffa0e86f)
 val Green54 = Color(0xFF80BA59)
 val White = Color(0xFFFFFFFF)
 val BlueGrey11 = Color(0xff181a20)
+val Grey14 = Color(0xff1f222a)
+val Grey22 = Color(0xff36383c)
 
 val Grey98 = Color(0xfffafafa)
 val Grey96 = Color(0xFFF6F6F6)

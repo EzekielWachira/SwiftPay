@@ -11,4 +11,18 @@
     <string name="sign_in">Sign in</string>
     <string name="get_started">Get Started</string>
     <string name="sign_up">Sign up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="welcome_back">Welcome back 👋</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="please_enter_your_email">Please enter your email and password to sign in</string>
+    <string name="create_account">Create account 🧑‍💻</string>
+    <string name="please_enter_your_email_pass">Please enter your email and password to sign up</string>
+    <string name="i_agree_to_terms"><![CDATA[I agree to SwiftPay Terms & Policy]]></string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="reset_password">Reset your password</string>
+    <string name="enter_your_email">Please enter your email and we will send an OTP code in the next step  to reset your password</string>
+    <string name="continue_">Continue</string>
 </resources>

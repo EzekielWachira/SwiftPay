@@ -1,25 +1,21 @@
 package com.example.swiftpay.ui.theme
 
 import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.googlefonts.GoogleFont
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
 import com.example.swiftpay.R
@@ -32,7 +28,10 @@ private val DarkColorScheme = darkColorScheme(
     onBackground = BlueGrey11,
     onPrimary = Green67,
     onSecondary = White,
-            surfaceTint = Grey96
+    surfaceTint = Grey96,
+    inversePrimary = White,
+    secondaryContainer = Grey14,
+    inverseSurface = Grey22
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -43,7 +42,10 @@ private val LightColorScheme = lightColorScheme(
     onBackground = BlueGrey11,
     onPrimary = Green67,
     onSecondary = BlueGrey11,
-    surfaceTint = Grey96
+    surfaceTint = Grey96,
+    inversePrimary = Color.Black,
+    secondaryContainer = Grey98,
+    inverseSurface = Grey96
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -58,7 +60,7 @@ private val LightColorScheme = lightColorScheme(
 
 private val provider = GoogleFont.Provider(
     providerAuthority = "com.google.android.gms.fonts",
-    providerPackage =  "com.google.android.gms",
+    providerPackage = "com.google.android.gms",
     certificates = R.array.com_google_android_gms_fonts_certs
 )
 
@@ -112,6 +114,13 @@ val typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = fontFamily,
         fontWeight = FontWeight.SemiBold,
+        fontSize = 20.sp,
+        letterSpacing = .1.sp,
+        lineHeight = 26.sp
+    ),
+    labelMedium = TextStyle(
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.Normal,
         fontSize = 20.sp,
         letterSpacing = .1.sp,
         lineHeight = 26.sp
