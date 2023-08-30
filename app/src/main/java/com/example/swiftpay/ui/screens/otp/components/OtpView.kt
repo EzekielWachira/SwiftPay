@@ -45,7 +45,7 @@ fun OtpView(modifier: Modifier = Modifier, otpState: OtpState) {
                 disabledIndicatorColor = Color.Transparent,
                 cursorColor = MaterialTheme.colorScheme.inversePrimary
             ),
-            modifier = Modifier.weight(1f),
+            modifier = Modifier,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             textStyle = MaterialTheme.typography.bodySmall
         )

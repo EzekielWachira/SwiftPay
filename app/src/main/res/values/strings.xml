@@ -25,4 +25,27 @@
     <string name="reset_password">Reset your password</string>
     <string name="enter_your_email">Please enter your email and we will send an OTP code in the next step  to reset your password</string>
     <string name="continue_">Continue</string>
+    <string name="account_kind">What kind of account do you want to open?</string>
+    <string name="add_account_later">You can always add account later.</string>
+    <string name="personal_account">Personal Account</string>
+    <string name="shop_send_receive">Shop, send and receive money around the world at lower costs.</string>
+    <string name="business_account">Business Account</string>
+    <string name="grow_your_business">Grow your business with more advanced features.</string>
+    <string name="what_is_your_name">What is your name? 🧑‍💻</string>
+    <string name="enter_full_name">Enter your full legal name accourding to the identity card.</string>
+    <string name="name">Name</string>
+    <string name="full_name">Full Name</string>
+    <string name="search_country">Search Country</string>
+    <string name="where_do_you_come_from">Where do you come from? 🗺️</string>
+    <string name="select_country">Select your country of origin. We will verify your identity in the next step of your residence.</string>
+    <string name="kenya">Kenya</string>
+    <string name="india">India</string>
+    <string name="tanzania">Tanzania</string>
+    <string name="uganda">Uganda</string>
+    <string name="usa">United State of America</string>
+    <string name="uk">United Kingdom</string>
+    <string name="brazil">Brazil</string>
+    <string name="china">China</string>
+    <string name="russia">Russia</string>
+    <string name="south_africa">South Africa</string>
 </resources>

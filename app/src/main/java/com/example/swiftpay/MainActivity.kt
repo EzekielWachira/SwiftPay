@@ -10,7 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.swiftpay.ui.screens.reset_password.ResetPasswordScreen
 import com.example.swiftpay.ui.screens.sign_in.SignInScreen
+import com.example.swiftpay.ui.screens.sign_up_steps.SignUpStepsScreen
 import com.example.swiftpay.ui.screens.splash.SplashScreen
 import com.example.swiftpay.ui.screens.walkthrough.GetStartedScreen
 import com.example.swiftpay.ui.screens.walkthrough.OnboardingScreen
@@ -25,7 +27,7 @@ class MainActivity : ComponentActivity() {
             SwiftPayTheme {
                 // A surface container using the 'background' color from the theme
 //                OnboardingScreen()
-                SignInScreen()
+                SignUpStepsScreen()
             }
         }
     }
