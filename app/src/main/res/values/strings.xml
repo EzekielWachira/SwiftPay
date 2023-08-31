@@ -48,4 +48,9 @@
     <string name="china">China</string>
     <string name="russia">Russia</string>
     <string name="south_africa">South Africa</string>
+    <string name="contacts">Contacts</string>
+    <string name="insights">Insights</string>
+    <string name="account">Account</string>
+    <string name="home">Home</string>
+    <string name="scan">Scanner</string>
 </resources>
