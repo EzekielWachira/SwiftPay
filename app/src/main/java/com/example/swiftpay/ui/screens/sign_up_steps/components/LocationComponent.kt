@@ -2,6 +2,7 @@ package com.example.swiftpay.ui.screens.sign_up_steps.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +14,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -30,8 +34,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.swiftpay.R
+import com.example.swiftpay.domain.model.Country
 import com.example.swiftpay.ui.screens.sign_up_steps.state.NameState
 import com.example.swiftpay.ui.screens.sign_up_steps.state.SearchState
+import com.example.swiftpay.ui.theme.Green54
 import com.example.swiftpay.ui.theme.SwiftPayTheme
 
 
@@ -40,7 +46,10 @@ fun LocationComponent(
     modifier: Modifier = Modifier,
     state: SearchState,
     onSearch: (String) -> Unit,
-    countries: List<Country>
+    countries: List<Country>,
+    onCountryClick: (Country) -> Unit,
+    selectedCountry: Country?,
+    onButtonClick: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -77,13 +86,13 @@ fun LocationComponent(
                 items(countries.size) { index ->
                     val country = countries[index]
                     CountryComponent(country = country, onCountryClick = {
-                        country.isSelected = true
+                        onCountryClick(it)
                     })
                 }
             }
         }
 
-        BottomButtonSection(text = stringResource(id = R.string.continue_), nameState = NameState() ) {}
+        ButtonSection(text = stringResource(id = R.string.continue_), selectedCountry = selectedCountry, onButtonClick = { onButtonClick() } )
 
     }
 }
@@ -98,7 +107,9 @@ fun SearchComponentPreview() {
                 .background(MaterialTheme.colorScheme.background),
             state = SearchState(),
             onSearch = {},
-            countries = countriesList)
+            countries = com.example.swiftpay.data.utils.countriesList,
+            onCountryClick = {}, selectedCountry = null,
+            onButtonClick = {  })
     }
 }
 
@@ -154,6 +165,53 @@ fun SearchSection(
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                 textStyle = MaterialTheme.typography.bodySmall
             )
+        }
+    }
+}
+
+
+@Composable
+fun ButtonSection(
+    modifier: Modifier = Modifier,
+    text: String,
+    onButtonClick: () -> Unit,
+    selectedCountry: Country?
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier
+    ) {
+
+        Divider(color = MaterialTheme.colorScheme.inverseSurface)
+
+        Box(
+            modifier = modifier
+                .padding(
+                    start = 16.dp,
+                    end = 16.dp,
+                    top = 16.dp,
+                    bottom = 30.dp
+                )
+        ) {
+
+            Button(
+                onClick = { onButtonClick() },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.onPrimary,
+                    disabledContainerColor = Green54
+                ),
+                enabled = selectedCountry != null
+            ) {
+
+                Text(
+                    text = text,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onBackground
+                )
+            }
         }
     }
 }

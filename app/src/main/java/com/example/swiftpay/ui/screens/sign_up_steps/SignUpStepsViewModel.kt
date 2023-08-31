@@ -1,21 +1,28 @@
 package com.example.swiftpay.ui.screens.sign_up_steps
 
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.lifecycle.ViewModel
-import com.example.swiftpay.ui.screens.sign_up_steps.components.Country
-import com.example.swiftpay.ui.screens.sign_up_steps.components.countriesList
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
+import com.example.swiftpay.domain.model.Country
+import com.example.swiftpay.domain.repository.CountryRepository
 import com.example.swiftpay.ui.screens.sign_up_steps.state.NameState
 import com.example.swiftpay.ui.screens.sign_up_steps.state.ProgressState
 import com.example.swiftpay.ui.screens.sign_up_steps.state.SearchState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SignUpStepsViewModel @Inject constructor(): ViewModel() {
+class SignUpStepsViewModel @Inject constructor(
+    private val countryRepository: CountryRepository
+) : ViewModel() {
 
     private val _nameState = MutableStateFlow(NameState())
     val nameState get() = _nameState.asStateFlow()
@@ -26,12 +33,47 @@ class SignUpStepsViewModel @Inject constructor(): ViewModel() {
     private val _searchState = MutableStateFlow(SearchState())
     val searchState get() = _searchState.asStateFlow()
 
-    private val _countries = MutableStateFlow(countriesList)
+    private val _countries =
+        MutableStateFlow<List<Country>>(emptyList())
     val countries get() = _countries.asStateFlow()
 
+    val selectedCountry =
+        countryRepository.getSelectedCountry()
+            .stateIn(
+                viewModelScope,
+                SharingStarted.WhileSubscribed(),
+                null
+            )
 
-    init {
-        _countries.value = countriesList
+
+
+    fun getCountries() {
+        viewModelScope.launch {
+            countryRepository.getCountries().collectLatest {
+                _countries.emit(it)
+            }
+        }
+    }
+
+    private fun searchCountry(query: String) {
+        viewModelScope.launch {
+            countryRepository.searchCountry(query).collectLatest {
+                _countries.emit(it)
+            }
+        }
+    }
+
+    fun selectCountry(country: Country) {
+        viewModelScope.launch {
+            countryRepository.selectCountry(country.id)
+        }
+    }
+
+
+    fun unSelectCountry(country: Country) {
+        viewModelScope.launch {
+            countryRepository.markCountryAsUnSelected(country.id)
+        }
     }
 
     fun onNameEntered(name: String) {
@@ -53,9 +95,8 @@ class SignUpStepsViewModel @Inject constructor(): ViewModel() {
             searchState.value.copy(query = text)
         }
 
-        _countries.update {
-            countries.value.filter { it.name.contains(text) }
-        }
+        if (text.isEmpty()) getCountries()
+        else searchCountry(text)
     }
 
     fun onCountrySelect(country: Country, index: Int) {

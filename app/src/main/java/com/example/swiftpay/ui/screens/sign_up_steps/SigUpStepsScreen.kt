@@ -29,6 +29,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -67,6 +68,7 @@ fun SignUpStepsScreen() {
     val progressState by viewModel.progressState.collectAsStateWithLifecycle()
     val searchState by viewModel.searchState.collectAsStateWithLifecycle()
     val countries by viewModel.countries.collectAsStateWithLifecycle()
+    val selectedCountry by viewModel.selectedCountry.collectAsStateWithLifecycle()
 
 
     val components = listOf(
@@ -94,7 +96,13 @@ fun SignUpStepsScreen() {
                 countries = countries,
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.background)
+                    .background(MaterialTheme.colorScheme.background),
+                onCountryClick = { country ->
+                    if (country.isSelected) viewModel.unSelectCountry(country)
+                    else viewModel.selectCountry(country)
+                },
+                selectedCountry = selectedCountry,
+                onButtonClick = {  }
             )
         }
     )
@@ -123,6 +131,8 @@ fun SignUpStepsScreen() {
                 White else BlueGrey11,
             darkIcons = useDarkIcons
         )
+
+        viewModel.getCountries()
     }
 
 
@@ -188,7 +198,13 @@ fun SignUpStepsScreen() {
                             countries = countries,
                             modifier = Modifier
                                 .fillMaxSize()
-                                .background(MaterialTheme.colorScheme.background)
+                                .background(MaterialTheme.colorScheme.background),
+                            onCountryClick = { country ->
+                                if (country.isSelected) viewModel.unSelectCountry(country)
+                                else viewModel.selectCountry(country)
+                            },
+                            selectedCountry = selectedCountry,
+                            onButtonClick = {  }
                         )
                     }
                 }

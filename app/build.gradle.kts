@@ -23,6 +23,12 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
     }
 
     buildTypes {
@@ -95,4 +101,5 @@ dependencies {
     implementation(libs.androidx.ui.text.google.fonts)
     implementation(libs.msz.progress.indicator)
     implementation(libs.accompanist.systemuicontroller)
+    implementation(libs.androidx.runtime.livedata)
 }

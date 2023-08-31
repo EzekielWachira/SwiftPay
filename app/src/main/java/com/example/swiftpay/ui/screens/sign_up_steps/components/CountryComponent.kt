@@ -25,6 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.swiftpay.R
+import com.example.swiftpay.domain.model.Country
 import com.example.swiftpay.ui.theme.SwiftPayTheme
 
 @Composable
@@ -82,27 +83,27 @@ fun CountryComponent(country: Country, onCountryClick: (Country) -> Unit) {
 fun CountryPreview() {
     SwiftPayTheme {
         CountryComponent(
-            country = Country(name = "Kenya", flag = R.drawable.kenya, true),
+            country = Country(name = "Kenya", flag = R.drawable.kenya, isSelected = true),
             onCountryClick = { }
         )
     }
 }
 
 
-data class Country(
-    val name: String,
-    @DrawableRes val flag: Int,
-    var isSelected: Boolean
-)
+//data class Country(
+//    val name: String,
+//    @DrawableRes val flag: Int,
+//    var isSelected: Boolean
+//)
 
-val countriesList = listOf(
-    Country( name = "Kenya", flag = R.drawable.kenya, false ),
-    Country( name = "Uganda", flag = R.drawable.uganda, false ),
-    Country( name = "Tanzania", flag = R.drawable.tanzania, false ),
-    Country( name = "South Africa", flag = R.drawable.south_africa, false ),
-    Country( name = "Russia", flag = R.drawable.russia, false ),
-    Country( name = "Brazil", flag = R.drawable.brazil, false ),
-    Country( name = "United Kingdom", flag = R.drawable.united_kingdom, false ),
-    Country( name = "United States of America", flag = R.drawable.usa, false ),
-    Country( name = "India", flag = R.drawable.india, false ),
-)
+//val countriesList = listOf(
+//    Country( name = "Kenya", flag = R.drawable.kenya, false ),
+//    Country( name = "Uganda", flag = R.drawable.uganda, false ),
+//    Country( name = "Tanzania", flag = R.drawable.tanzania, false ),
+//    Country( name = "South Africa", flag = R.drawable.south_africa, false ),
+//    Country( name = "Russia", flag = R.drawable.russia, false ),
+//    Country( name = "Brazil", flag = R.drawable.brazil, false ),
+//    Country( name = "United Kingdom", flag = R.drawable.united_kingdom, false ),
+//    Country( name = "United States of America", flag = R.drawable.usa, false ),
+//    Country( name = "India", flag = R.drawable.india, false ),
+//)
