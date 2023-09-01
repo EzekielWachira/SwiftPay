@@ -126,6 +126,20 @@ val typography = Typography(
         fontSize = 20.sp,
         letterSpacing = .1.sp,
         lineHeight = 26.sp
+    ),
+    labelSmall = TextStyle(
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        letterSpacing = .15.sp,
+        lineHeight = 20.sp
+    ),
+    displaySmall = TextStyle(
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp,
+        letterSpacing = .15.sp,
+        lineHeight = 20.sp
     )
 )
 

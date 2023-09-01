@@ -1,5 +1,7 @@
 package com.example.swiftpay.ui.screens.home
 
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -12,25 +14,44 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
+import com.example.swiftpay.domain.model.Country
+import com.example.swiftpay.ui.screens.home.components.Transaction
+import com.example.swiftpay.ui.screens.home.components.TransactionHistoryItem
+import com.example.swiftpay.ui.screens.home.components.TransactionsStickyHeader
+import com.example.swiftpay.ui.screens.home.components.transactions
 import com.example.swiftpay.ui.screens.main.components.MainTopBar
+import com.example.swiftpay.ui.screens.sign_up_steps.components.CountryComponent
+import com.example.swiftpay.ui.theme.SwiftPayTheme
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreen(navController: NavController) {
+
+    val groupedTransactions = transactions.groupBy { it.formattedDate }
 
     Scaffold(
         topBar = { MainTopBar(onNotificationClick = { }, onLogoClick = { }) }
@@ -195,7 +216,91 @@ fun HomeScreen(navController: NavController) {
                 Spacer(modifier = Modifier.height(30.dp))
             }
 
+            TransactionHistorySection(modifier = Modifier.fillMaxWidth(), onViewAllClicked = { })
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(2.dp)
+            ) {
+                groupedTransactions.forEach { (date, transactions) ->
+                    stickyHeader {
+                        TransactionsStickyHeader(text = date, modifier = Modifier.fillMaxWidth()
+                            .padding(start = 16.dp, end = 16.dp))
+                    }
+
+                    itemsIndexed(transactions) { index: Int, transaction: Transaction ->
+                        TransactionHistoryItem(transaction = transaction, onTransactionClick = {  },
+                            modifier = Modifier.fillMaxWidth())
+
+                        if (index < transactions.lastIndex)
+                        Divider(modifier = Modifier.padding(start = 16.dp, end = 16.dp),
+                            color = MaterialTheme.colorScheme.inverseSurface)
+                    }
+//                    items(transactions, key = { it.name }) {  transaction ->
+//                        TransactionHistoryItem(transaction = transaction, onTransactionClick = {  },
+//                            modifier = Modifier.fillMaxWidth())
+//                    }
+                }
+            }
+
         }
     }
 
+}
+
+
+@Preview
+@Composable
+fun HomeScreenPreview() {
+    SwiftPayTheme {
+        HomeScreen(navController = rememberNavController())
+    }
+}
+
+@Composable
+fun TransactionHistorySection(
+    modifier: Modifier = Modifier,
+    onViewAllClicked: () -> Unit
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier.padding(
+            start = 16.dp,
+            end = 16.dp,
+            top = 10.dp,
+            bottom = 10.dp
+        )
+    ) {
+
+        Text(
+            text = stringResource(R.string.transaction_history),
+            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier.weight(1f),
+            color = MaterialTheme.colorScheme.inversePrimary
+        )
+
+        TextButton(onClick = { onViewAllClicked() }) {
+            Text(
+                text = stringResource(R.string.view_all),
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onTertiary
+            )
+        }
+
+        IconButton(onClick = { onViewAllClicked() }) {
+            Icon(
+                painter = painterResource(id = R.drawable.chevron_right),
+                contentDescription = "Right arrow",
+                modifier = Modifier.size(16.dp),
+                tint = MaterialTheme.colorScheme.onTertiary
+            )
+        }
+
+    }
+}
+
+@Preview
+@Composable
+fun TransactionHistorySectionPreview() {
+    SwiftPayTheme {
+        TransactionHistorySection(modifier = Modifier.fillMaxWidth(), onViewAllClicked = {})
+    }
 }

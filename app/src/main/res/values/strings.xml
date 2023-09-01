@@ -53,4 +53,6 @@
     <string name="account">Account</string>
     <string name="home">Home</string>
     <string name="scan">Scanner</string>
+    <string name="transaction_history">Transaction History</string>
+    <string name="view_all">View All</string>
 </resources>

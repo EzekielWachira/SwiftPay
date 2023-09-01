@@ -1,5 +1,7 @@
 package com.example.swiftpay.ui.screens.sign_up_steps.components
 
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -35,12 +38,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.swiftpay.R
 import com.example.swiftpay.domain.model.Country
-import com.example.swiftpay.ui.screens.sign_up_steps.state.NameState
 import com.example.swiftpay.ui.screens.sign_up_steps.state.SearchState
 import com.example.swiftpay.ui.theme.Green54
 import com.example.swiftpay.ui.theme.SwiftPayTheme
 
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun LocationComponent(
     modifier: Modifier = Modifier,
@@ -80,15 +83,26 @@ fun LocationComponent(
 
             Spacer(modifier = Modifier.height(25.dp))
 
+            val groupedCountries = countries.groupBy {
+                it.name[0]
+            }
+
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                items(countries.size) { index ->
-                    val country = countries[index]
-                    CountryComponent(country = country, onCountryClick = {
-                        onCountryClick(it)
-                    })
+
+                groupedCountries.forEach { (initial, countriesForInitial) ->
+                    stickyHeader {
+                        Text(text = initial.toString(), style = MaterialTheme.typography.labelSmall)
+                    }
+
+                    items(countriesForInitial, key = { it.id }) {  country ->
+                        CountryComponent(country = country, onCountryClick = {
+                            onCountryClick(it)
+                        }, modifier = Modifier.animateItemPlacement(tween(durationMillis = 500)))
+                    }
                 }
+
             }
         }
 

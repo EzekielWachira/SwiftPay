@@ -17,13 +17,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.ui.theme.BlueGrey11
 import com.example.swiftpay.ui.theme.Green67_A
+import com.example.swiftpay.ui.theme.SwiftPayTheme
 import com.example.swiftpay.ui.theme.White
 
 @Composable
@@ -54,7 +57,7 @@ fun BottomNavBar(modifier: Modifier = Modifier, navController: NavController, vi
                         Icon(painter = painterResource(id = screen.icon), contentDescription = null)
                     },
                     label = {
-                        Text(text = stringResource(id = screen.label), style = MaterialTheme.typography.labelSmall)
+                        Text(text = stringResource(id = screen.label), style = MaterialTheme.typography.displaySmall)
                     },
                     colors = NavigationBarItemDefaults.colors(
                         selectedIconColor = Color.Black,
@@ -64,5 +67,14 @@ fun BottomNavBar(modifier: Modifier = Modifier, navController: NavController, vi
                 )
             }
         }
+    }
+}
+
+
+@Preview
+@Composable
+fun BottomNavBarPreview() {
+    SwiftPayTheme {
+        BottomNavBar(navController = rememberNavController())
     }
 }

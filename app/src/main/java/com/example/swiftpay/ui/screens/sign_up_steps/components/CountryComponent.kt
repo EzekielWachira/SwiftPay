@@ -2,6 +2,7 @@ package com.example.swiftpay.ui.screens.sign_up_steps.components
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
@@ -29,11 +30,12 @@ import com.example.swiftpay.domain.model.Country
 import com.example.swiftpay.ui.theme.SwiftPayTheme
 
 @Composable
-fun CountryComponent(country: Country, onCountryClick: (Country) -> Unit) {
+fun CountryComponent(modifier: Modifier = Modifier, country: Country, onCountryClick: (Country) -> Unit) {
     Surface(
         shape = RoundedCornerShape(10.dp),
-        modifier = Modifier
-            .fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            ,
         border = BorderStroke(
             1.dp,
             if (country.isSelected) MaterialTheme.colorScheme.onSecondary else MaterialTheme.colorScheme.inverseSurface

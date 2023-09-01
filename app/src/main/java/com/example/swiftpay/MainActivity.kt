@@ -28,6 +28,7 @@ class MainActivity : ComponentActivity() {
             SwiftPayTheme {
                 // A surface container using the 'background' color from the theme
 //                OnboardingScreen()
+//                SignUpStepsScreen()
                 MainScreen()
             }
         }
