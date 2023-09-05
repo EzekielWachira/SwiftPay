@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -31,11 +30,13 @@ import com.example.swiftpay.ui.theme.SwiftPayTheme
 fun AccountDetailsSection(
     modifier: Modifier = Modifier,
     onQrCodeClick: () -> Unit,
+    onClick: () -> Unit,
     user: User = User(name = "Andrew Ainsley", email = "andrew.ainsley@gmail.com")
 ) {
     Surface(
         color = MaterialTheme.colorScheme.background,
         modifier = modifier,
+        onClick = { onClick() }
 //        shape = RoundedCornerShape(10.dp)
     ) {
         Row(
@@ -95,7 +96,7 @@ fun AccountDetailsSection(
 @Composable
 fun AccountDetailsSectionPrev() {
     SwiftPayTheme {
-        AccountDetailsSection(onQrCodeClick = {})
+        AccountDetailsSection(onQrCodeClick = {}, onClick = {})
     }
 }
 

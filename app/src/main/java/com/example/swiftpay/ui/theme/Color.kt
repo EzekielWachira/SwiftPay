@@ -26,5 +26,6 @@ val Grey13 = Color(0xff212121)
 val Red65 = Color(0xFFF55655)
 val Grey38 = Color(0xff626261)
 val Grey94 = Color(0xFFEFEFEF)
+//val Grey94 = Color(0xffeeeeee)
 
 

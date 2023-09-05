@@ -71,4 +71,6 @@
     <string name="share">Share</string>
     <string name="save">Save</string>
     <string name="dark_mode">Dark Mode</string>
+    <string name="personal_info">Personal Info</string>
+    <string name="add_new_payment">Add New Payment</string>
 </resources>

@@ -28,6 +28,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.navigation.NavDestinations.Account.PERSONAL_INFO_SCREEN
+import com.example.swiftpay.ui.navigation.NavDestinations.Payment.PAYMENT_METHODS_ROUTE
 import com.example.swiftpay.ui.screens.account.components.AccountDetailsSection
 import com.example.swiftpay.ui.screens.account.components.AccountItem
 import com.example.swiftpay.ui.screens.account.components.CustomDivider
@@ -47,6 +49,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 @Composable
 fun AccountScreen(navController: NavController) {
 
+//    val navController = rememberNavController()
     val scrollState = rememberScrollState()
     val bottomSheetState = rememberModalBottomSheetState()
     val coroutineScope = rememberCoroutineScope()
@@ -94,7 +97,10 @@ fun AccountScreen(navController: NavController) {
                     onQrCodeClick = {
                         isSheetOpen = true
                     },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = {
+                        navController.navigate(PERSONAL_INFO_SCREEN)
+                    }
                 )
 
                 Spacer(modifier = Modifier.height(DpDimensions.Small))
@@ -114,14 +120,14 @@ fun AccountScreen(navController: NavController) {
                         icon = R.drawable.cards, title = stringResource(R.string.payment_methods),
                         modifier = Modifier.fillMaxWidth()
                     ) {
-
+                        navController.navigate(PAYMENT_METHODS_ROUTE)
                     }
 
                     AccountItem(
-                        icon = R.drawable.account, title = stringResource(R.string.account),
+                        icon = R.drawable.account, title = stringResource(R.string.personal_info),
                         modifier = Modifier.fillMaxWidth()
                     ) {
-
+                        navController.navigate(PERSONAL_INFO_SCREEN)
                     }
 
                     AccountItem(
