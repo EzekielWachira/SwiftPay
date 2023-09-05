@@ -63,6 +63,7 @@ fun ContactsScreen(navController: NavController) {
 
     val viewModel: ContactsViewModel = hiltViewModel()
     val searchState by viewModel.searchState.collectAsStateWithLifecycle()
+    val searchContacts by viewModel.contacts.collectAsStateWithLifecycle()
     var tabIndex by rememberSaveable {
         mutableStateOf(0)
     }
@@ -120,16 +121,30 @@ fun ContactsScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(DpDimensions.Small))
 
             if (focusState) {
-                Column(
+                LazyColumn(
+                    verticalArrangement = Arrangement.spacedBy(2.dp),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .weight(1f),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
+                        .weight(1f)
                 ) {
 
-                    Text(text = "Search Screen")
+                    item {
+                        Spacer(modifier = Modifier.height(20.dp))
+                    }
 
+                    searchContacts.groupBy { it.name[0] }.forEach { (char, contacts) ->
+                        stickyHeader {
+                            TransactionsStickyHeader(
+                                text = char.toString(), modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(start = 16.dp, end = 16.dp)
+                            )
+                        }
+
+                        itemsIndexed(contacts) {index, contact ->
+                            ContactItem(contact = contact, onContactClick = {})
+                        }
+                    }
                 }
             } else {
 

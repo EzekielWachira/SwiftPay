@@ -59,4 +59,13 @@
     <string name="all_contacts">All Contacts</string>
     <string name="favorites">Favorites</string>
     <string name="phone_contacts">Phone Contacts</string>
+    <string name="general">General</string>
+    <string name="payment_methods">Payment Methods</string>
+    <string name="notification">Notification</string>
+    <string name="security">Security</string>
+    <string name="language">Language</string>
+    <string name="help">Help Center</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="about">About SwiftPay</string>
+    <string name="logout">Logout</string>
 </resources>
