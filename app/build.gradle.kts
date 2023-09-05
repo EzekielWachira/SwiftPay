@@ -102,4 +102,7 @@ dependencies {
     implementation(libs.msz.progress.indicator)
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.runtime.livedata)
+    implementation(libs.vico.compose)
+    implementation(libs.vico.compose.m3)
+    implementation(libs.vico.core)
 }

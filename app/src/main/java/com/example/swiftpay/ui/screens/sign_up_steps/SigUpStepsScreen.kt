@@ -90,17 +90,12 @@ fun SignUpStepsScreen() {
         Component {
             LocationComponent(
                 state = searchState,
-                onSearch = { query ->
-                    viewModel.onSearch(query)
-                },
+                onSearch = viewModel::onSearch,
                 countries = countries,
                 modifier = Modifier
                     .fillMaxSize()
                     .background(MaterialTheme.colorScheme.background),
-                onCountryClick = { country ->
-                    if (country.isSelected) viewModel.unSelectCountry(country)
-                    else viewModel.selectCountry(country)
-                },
+                onCountryClick = viewModel::selectCountry,
                 selectedCountry = selectedCountry,
                 onButtonClick = {  }
             )
@@ -192,17 +187,12 @@ fun SignUpStepsScreen() {
 
                         2 -> LocationComponent(
                             state = searchState,
-                            onSearch = { query ->
-                                viewModel.onSearch(query)
-                            },
+                            onSearch = viewModel::onSearch,
                             countries = countries,
                             modifier = Modifier
                                 .fillMaxSize()
                                 .background(MaterialTheme.colorScheme.background),
-                            onCountryClick = { country ->
-                                if (country.isSelected) viewModel.unSelectCountry(country)
-                                else viewModel.selectCountry(country)
-                            },
+                            onCountryClick = viewModel::selectCountry,
                             selectedCountry = selectedCountry,
                             onButtonClick = {  }
                         )

@@ -55,4 +55,8 @@
     <string name="scan">Scanner</string>
     <string name="transaction_history">Transaction History</string>
     <string name="view_all">View All</string>
+    <string name="search_contact">Search Contact</string>
+    <string name="all_contacts">All Contacts</string>
+    <string name="favorites">Favorites</string>
+    <string name="phone_contacts">Phone Contacts</string>
 </resources>

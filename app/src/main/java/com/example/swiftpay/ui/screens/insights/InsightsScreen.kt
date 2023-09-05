@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.example.swiftpay.ui.navigation.Screen
+import com.example.swiftpay.ui.screens.insights.components.ChartComponent
 import com.example.swiftpay.ui.screens.main.components.MainTopBar
 
 @Composable
@@ -20,9 +21,11 @@ fun InsightsScreen(navController: NavController) {
     Scaffold { paddingValues ->
         Column(verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(paddingValues).fillMaxSize()) {
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize()) {
 
-            Text(text = "Insights", style = MaterialTheme.typography.titleMedium)
+            ChartComponent()
 
         }
     }

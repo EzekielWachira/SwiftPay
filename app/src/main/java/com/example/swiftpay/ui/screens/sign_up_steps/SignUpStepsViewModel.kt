@@ -65,7 +65,9 @@ class SignUpStepsViewModel @Inject constructor(
 
     fun selectCountry(country: Country) {
         viewModelScope.launch {
-            countryRepository.selectCountry(country.id)
+            if (country.isSelected) {
+                countryRepository.markCountryAsUnSelected(country.id)
+            } else countryRepository.selectCountry(country.id)
         }
     }
 

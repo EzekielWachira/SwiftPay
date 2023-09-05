@@ -1,6 +1,5 @@
 package com.example.swiftpay.ui.screens.home
 
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -15,7 +14,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Divider
@@ -38,13 +36,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
-import com.example.swiftpay.domain.model.Country
 import com.example.swiftpay.ui.screens.home.components.Transaction
 import com.example.swiftpay.ui.screens.home.components.TransactionHistoryItem
 import com.example.swiftpay.ui.screens.home.components.TransactionsStickyHeader
 import com.example.swiftpay.ui.screens.home.components.transactions
 import com.example.swiftpay.ui.screens.main.components.MainTopBar
-import com.example.swiftpay.ui.screens.sign_up_steps.components.CountryComponent
 import com.example.swiftpay.ui.theme.SwiftPayTheme
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -222,17 +218,24 @@ fun HomeScreen(navController: NavController) {
             ) {
                 groupedTransactions.forEach { (date, transactions) ->
                     stickyHeader {
-                        TransactionsStickyHeader(text = date, modifier = Modifier.fillMaxWidth()
-                            .padding(start = 16.dp, end = 16.dp))
+                        TransactionsStickyHeader(
+                            text = date, modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 16.dp, end = 16.dp)
+                        )
                     }
 
                     itemsIndexed(transactions) { index: Int, transaction: Transaction ->
-                        TransactionHistoryItem(transaction = transaction, onTransactionClick = {  },
-                            modifier = Modifier.fillMaxWidth())
+                        TransactionHistoryItem(
+                            transaction = transaction, onTransactionClick = { },
+                            modifier = Modifier.fillMaxWidth()
+                        )
 
                         if (index < transactions.lastIndex)
-                        Divider(modifier = Modifier.padding(start = 16.dp, end = 16.dp),
-                            color = MaterialTheme.colorScheme.inverseSurface)
+                            Divider(
+                                modifier = Modifier.padding(start = 16.dp, end = 16.dp),
+                                color = MaterialTheme.colorScheme.inverseSurface
+                            )
                     }
 //                    items(transactions, key = { it.name }) {  transaction ->
 //                        TransactionHistoryItem(transaction = transaction, onTransactionClick = {  },
