@@ -15,7 +15,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -59,163 +61,167 @@ fun HomeScreen(navController: NavController) {
                 .fillMaxSize()
         ) {
 
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(MaterialTheme.colorScheme.onPrimary)
-            ) {
-
-                Spacer(modifier = Modifier.height(20.dp))
-
-                Row {
-                    Text(
-                        text = "3,343.34", style = MaterialTheme.typography.titleLarge,
-                        fontSize = 35.sp, color = Color.Black
-                    )
-
-                    Text(
-                        text = "$",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = Color.Black
-                    )
-                }
-                Spacer(modifier = Modifier.height(10.dp))
-
-                Text(
-                    text = "Available balance",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = Color.Black
-                )
-
-                Spacer(modifier = Modifier.height(30.dp))
-
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-
-                        Box(
-                            contentAlignment = Alignment.Center,
-                            modifier = Modifier
-                                .size(60.dp)
-                                .clip(CircleShape)
-                                .border(1.dp, Color.Black, CircleShape)
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.send),
-                                contentDescription = "Business icon",
-                                modifier = Modifier.size(25.dp),
-                                tint = Color.Black
-                            )
-                        }
-
-                        Spacer(modifier = Modifier.height(10.dp))
-
-                        Text(
-                            text = "Send", style = MaterialTheme.typography.titleSmall,
-                            color = Color.Black
-                        )
-
-                    }
-
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-
-                        Box(
-                            contentAlignment = Alignment.Center,
-                            modifier = Modifier
-                                .size(60.dp)
-                                .clip(CircleShape)
-                                .border(1.dp, Color.Black, CircleShape)
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.receive_1),
-                                contentDescription = "Business icon",
-                                modifier = Modifier.size(25.dp),
-                                tint = Color.Black
-                            )
-                        }
-
-                        Spacer(modifier = Modifier.height(10.dp))
-
-                        Text(
-                            text = "Request", style = MaterialTheme.typography.titleSmall,
-                            color = Color.Black
-                        )
-
-                    }
-
-
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-
-                        Box(
-                            contentAlignment = Alignment.Center,
-                            modifier = Modifier
-                                .size(60.dp)
-                                .clip(CircleShape)
-                                .border(1.dp, Color.Black, CircleShape)
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.top_up),
-                                contentDescription = "Business icon",
-                                modifier = Modifier.size(25.dp),
-                                tint = Color.Black
-                            )
-                        }
-
-                        Spacer(modifier = Modifier.height(10.dp))
-
-                        Text(
-                            text = "Top Up", style = MaterialTheme.typography.titleSmall,
-                            color = Color.Black
-                        )
-
-                    }
-
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-
-                        Box(
-                            contentAlignment = Alignment.Center,
-                            modifier = Modifier
-                                .size(60.dp)
-                                .clip(CircleShape)
-                                .border(1.dp, Color.Black, CircleShape)
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.withdraw),
-                                contentDescription = "Business icon",
-                                modifier = Modifier.size(25.dp),
-                                tint = Color.Black
-                            )
-                        }
-
-                        Spacer(modifier = Modifier.height(10.dp))
-
-                        Text(
-                            text = "Withdraw", style = MaterialTheme.typography.titleSmall,
-                            color = Color.Black
-                        )
-
-                    }
-
-                }
-
-                Spacer(modifier = Modifier.height(30.dp))
-            }
-
-            TransactionHistorySection(modifier = Modifier.fillMaxWidth(), onViewAllClicked = { })
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(2.dp)
             ) {
+
+                item {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(MaterialTheme.colorScheme.onPrimary)
+                    ) {
+
+                        Spacer(modifier = Modifier.height(20.dp))
+
+                        Row {
+                            Text(
+                                text = "3,343.34", style = MaterialTheme.typography.titleLarge,
+                                fontSize = 35.sp, color = Color.Black
+                            )
+
+                            Text(
+                                text = "$",
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = Color.Black
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(10.dp))
+
+                        Text(
+                            text = "Available balance",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = Color.Black
+                        )
+
+                        Spacer(modifier = Modifier.height(30.dp))
+
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(16.dp)
+                        ) {
+
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+
+                                Box(
+                                    contentAlignment = Alignment.Center,
+                                    modifier = Modifier
+                                        .size(60.dp)
+                                        .clip(CircleShape)
+                                        .border(1.dp, Color.Black, CircleShape)
+                                ) {
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.send),
+                                        contentDescription = "Business icon",
+                                        modifier = Modifier.size(25.dp),
+                                        tint = Color.Black
+                                    )
+                                }
+
+                                Spacer(modifier = Modifier.height(10.dp))
+
+                                Text(
+                                    text = "Send", style = MaterialTheme.typography.titleSmall,
+                                    color = Color.Black
+                                )
+
+                            }
+
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+
+                                Box(
+                                    contentAlignment = Alignment.Center,
+                                    modifier = Modifier
+                                        .size(60.dp)
+                                        .clip(CircleShape)
+                                        .border(1.dp, Color.Black, CircleShape)
+                                ) {
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.receive_1),
+                                        contentDescription = "Business icon",
+                                        modifier = Modifier.size(25.dp),
+                                        tint = Color.Black
+                                    )
+                                }
+
+                                Spacer(modifier = Modifier.height(10.dp))
+
+                                Text(
+                                    text = "Request", style = MaterialTheme.typography.titleSmall,
+                                    color = Color.Black
+                                )
+
+                            }
+
+
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+
+                                Box(
+                                    contentAlignment = Alignment.Center,
+                                    modifier = Modifier
+                                        .size(60.dp)
+                                        .clip(CircleShape)
+                                        .border(1.dp, Color.Black, CircleShape)
+                                ) {
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.top_up),
+                                        contentDescription = "Business icon",
+                                        modifier = Modifier.size(25.dp),
+                                        tint = Color.Black
+                                    )
+                                }
+
+                                Spacer(modifier = Modifier.height(10.dp))
+
+                                Text(
+                                    text = "Top Up", style = MaterialTheme.typography.titleSmall,
+                                    color = Color.Black
+                                )
+
+                            }
+
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+
+                                Box(
+                                    contentAlignment = Alignment.Center,
+                                    modifier = Modifier
+                                        .size(60.dp)
+                                        .clip(CircleShape)
+                                        .border(1.dp, Color.Black, CircleShape)
+                                ) {
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.withdraw),
+                                        contentDescription = "Business icon",
+                                        modifier = Modifier.size(25.dp),
+                                        tint = Color.Black
+                                    )
+                                }
+
+                                Spacer(modifier = Modifier.height(10.dp))
+
+                                Text(
+                                    text = "Withdraw", style = MaterialTheme.typography.titleSmall,
+                                    color = Color.Black
+                                )
+
+                            }
+
+                        }
+
+                        Spacer(modifier = Modifier.height(30.dp))
+                    }
+
+                    TransactionHistorySection(modifier = Modifier.fillMaxWidth(), onViewAllClicked = { })
+                }
+
                 groupedTransactions.forEach { (date, transactions) ->
                     stickyHeader {
                         TransactionsStickyHeader(
