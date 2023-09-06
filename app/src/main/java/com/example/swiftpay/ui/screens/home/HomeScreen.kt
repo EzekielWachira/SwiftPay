@@ -231,7 +231,7 @@ fun HomeScreen(navController: NavController) {
                         )
                     }
 
-                    itemsIndexed(transactions) { index: Int, transaction: Transaction ->
+                    itemsIndexed(transactions, key = { id, trans -> "$id" + trans.name }) { index: Int, transaction: Transaction ->
                         TransactionHistoryItem(
                             transaction = transaction, onTransactionClick = { },
                             modifier = Modifier.fillMaxWidth()

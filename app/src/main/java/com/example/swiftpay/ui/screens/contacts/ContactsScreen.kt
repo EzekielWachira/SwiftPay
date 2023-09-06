@@ -141,7 +141,7 @@ fun ContactsScreen(navController: NavController) {
                             )
                         }
 
-                        itemsIndexed(contacts) {index, contact ->
+                        itemsIndexed(contacts, key = { id, con -> "$id" + con.email }) {index, contact ->
                             ContactItem(contact = contact, onContactClick = {})
                         }
                     }
@@ -208,7 +208,7 @@ fun ContactsScreen(navController: NavController) {
                                     )
                                 }
 
-                                itemsIndexed(contacts) {index, contact ->
+                                itemsIndexed(contacts, key = { id, con -> "$id" + con.email }) {index, contact ->
                                     ContactItem(contact = contact, onContactClick = {})
                                 }
                             }
@@ -236,7 +236,7 @@ fun ContactsScreen(navController: NavController) {
                                     )
                                 }
 
-                                itemsIndexed(contacts) {index, contact ->
+                                itemsIndexed(contacts, key = { id, con -> "$id" + con.email }) {index, contact ->
                                     ContactItem(contact = contact, onContactClick = {})
                                 }
                             }

@@ -73,4 +73,21 @@
     <string name="dark_mode">Dark Mode</string>
     <string name="personal_info">Personal Info</string>
     <string name="add_new_payment">Add New Payment</string>
+    <string name="transactions_status_updates">Transactions Status Updates</string>
+    <string name="fraud_alert">Fraud or suspicious activity alerts</string>
+    <string name="payment_requests">Payment request notifications</string>
+    <string name="card_activity">Card activity notifications</string>
+    <string name="customer_support">Customer support notification</string>
+    <string name="account_balance">Account balance alerts</string>
+    <string name="security_alert">Security alerts</string>
+    <string name="daily_weekly_summary">Daily or weekly summary</string>
+    <string name="app_updates"><![CDATA[App updates & enhancements]]></string>
+    <string name="promotional_offers"><![CDATA[Promotional offers & updates]]></string>
+    <string name="participate_servey">Participate in a survey</string>
+    <string name="biometric_id">Biometric ID</string>
+    <string name="face_id">Face ID</string>
+    <string name="sms_authenticator">SMS Authenticator</string>
+    <string name="google_authenticator">Google Authenticator</string>
+    <string name="device_management">Device Management</string>
+    <string name="change_password">Change Password</string>
 </resources>

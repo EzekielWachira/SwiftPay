@@ -28,8 +28,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.navigation.NavDestinations
 import com.example.swiftpay.ui.navigation.NavDestinations.Account.PERSONAL_INFO_SCREEN
+import com.example.swiftpay.ui.navigation.NavDestinations.NotificationSettings.NOTIFICATION_SETTINGS_SCREEN
 import com.example.swiftpay.ui.navigation.NavDestinations.Payment.PAYMENT_METHODS_ROUTE
+import com.example.swiftpay.ui.navigation.NavDestinations.Security.SECURITY_SCREEN
 import com.example.swiftpay.ui.screens.account.components.AccountDetailsSection
 import com.example.swiftpay.ui.screens.account.components.AccountItem
 import com.example.swiftpay.ui.screens.account.components.CustomDivider
@@ -135,14 +138,14 @@ fun AccountScreen(navController: NavController) {
                         title = stringResource(R.string.notification),
                         modifier = Modifier.fillMaxWidth()
                     ) {
-
+                        navController.navigate(NOTIFICATION_SETTINGS_SCREEN)
                     }
 
                     AccountItem(
                         icon = R.drawable.secutiry, title = stringResource(R.string.security),
                         modifier = Modifier.fillMaxWidth()
                     ) {
-
+                        navController.navigate(SECURITY_SCREEN)
                     }
 
                     LanguageItem(
@@ -157,7 +160,7 @@ fun AccountScreen(navController: NavController) {
                     DarkModeItem(
                         icon = R.drawable.dark_mode,
                         title = stringResource(R.string.dark_mode),
-                        switchState = switchState,
+                        onState = { switchState },
                         onCheckChange = viewModel::onCheckChange
                     )
 

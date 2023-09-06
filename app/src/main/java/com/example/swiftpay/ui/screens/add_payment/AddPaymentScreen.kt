@@ -45,7 +45,8 @@ fun AddPaymentScreen(navController: NavController) {
                 leftIcon = R.drawable.close_2,
                 toolbarTitle = stringResource(id = R.string.add_new_payment),
                 modifier = Modifier.fillMaxWidth()
-                    .background(MaterialTheme.colorScheme.background)
+                    .background(MaterialTheme.colorScheme.background),
+                isRightIconVisible = true
             )
         }
     ) { paddingValues ->

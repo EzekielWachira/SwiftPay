@@ -52,7 +52,8 @@ fun PaymentMethodsScreen(navController: NavController) {
                 toolbarTitle = stringResource(id = R.string.payment_methods),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(MaterialTheme.colorScheme.background)
+                    .background(MaterialTheme.colorScheme.background),
+                isRightIconVisible = true
             )
         }
     ) { paddingValues ->
