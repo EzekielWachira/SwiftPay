@@ -36,6 +36,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.navigation.Screen
 import com.example.swiftpay.ui.screens.amount.components.NumberPad
 import com.example.swiftpay.ui.screens.common.AppBarWithTwoActions
 import com.example.swiftpay.ui.theme.DpDimensions
@@ -51,7 +52,7 @@ fun EnterAmountScreen(navController: NavController) {
     Scaffold(
         topBar = {
             AppBarWithTwoActions(
-                onLeftButtonClick = { navController.popBackStack() },
+                onLeftButtonClick = { navController.popBackStack(Screen.HOME, inclusive = true, saveState = true) },
                 onRightButtonClick = { },
                 rightIcon = Icons.Outlined.ArrowBack,
                 leftIcon = Icons.Outlined.ArrowBack,

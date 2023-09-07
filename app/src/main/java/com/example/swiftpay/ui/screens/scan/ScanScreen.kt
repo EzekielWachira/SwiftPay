@@ -57,6 +57,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
 import com.example.swiftpay.qr_code.BarcodeScanner
 import com.example.swiftpay.qr_code.QrCodeAnalyzer
+import com.example.swiftpay.ui.navigation.NavDestinations.SendMoney.SEND_MONEY_MAIN
 import com.example.swiftpay.ui.screens.common.AppBarWithTwoActions
 import com.example.swiftpay.ui.screens.main.components.MainTopBar
 import com.example.swiftpay.ui.theme.BlueGrey11
@@ -109,6 +110,11 @@ fun ScanScreen(navController: NavController) {
             color = Color.Black,
             darkIcons = useDarkIcons
         )
+
+        systemUiController.setNavigationBarColor(
+            color = Color.Black,
+            darkIcons = true
+        )
     }
 
     LaunchedEffect(key1 = true) {
@@ -125,7 +131,9 @@ fun ScanScreen(navController: NavController) {
                 leftIcon = Icons.Outlined.Close,
                 toolbarTitle = "",
                 isRightIconVisible = false,
-                modifier = Modifier.background(Color.Black)
+                modifier = Modifier.background(Color.Black),
+                iconColor = White,
+                textColor = White
             )
         },
         containerColor = Color.Black
@@ -184,6 +192,7 @@ fun ScanScreen(navController: NavController) {
                                 ContextCompat.getMainExecutor(context),
                                 QrCodeAnalyzer { result ->
                                     code = result
+                                    navController.navigate(SEND_MONEY_MAIN)
                                 }
                             )
                             try {

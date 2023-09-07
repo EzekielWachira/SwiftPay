@@ -57,4 +57,9 @@ object NavDestinations {
         const val SEND_MONEY = "send_money"
     }
 
+    object SendTo {
+        const val SEND_TO_MAIN = "send_to_main"
+        const val SEND_TO = "send_to"
+    }
+
 }

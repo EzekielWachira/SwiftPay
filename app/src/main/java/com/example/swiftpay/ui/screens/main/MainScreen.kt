@@ -25,6 +25,7 @@ import com.example.swiftpay.ui.navigation.navigationSettings
 import com.example.swiftpay.ui.navigation.paymentMethodsNavGraph
 import com.example.swiftpay.ui.navigation.securityNavGraph
 import com.example.swiftpay.ui.navigation.sendMoneyNavGraph
+import com.example.swiftpay.ui.navigation.sendToNavGraph
 import com.example.swiftpay.ui.theme.BlueGrey11
 import com.example.swiftpay.ui.theme.Green67
 import com.example.swiftpay.ui.theme.SwiftPayTheme
@@ -53,19 +54,19 @@ fun MainScreen() {
         else -> false
     }
 
-    SideEffect {
-        systemUiController.setSystemBarsColor(
-            color = if (useDarkIcons)
-                Green67 else Green67,
-            darkIcons = true
-        )
-
-        systemUiController.setNavigationBarColor(
-            color = if (useDarkIcons)
-                White else BlueGrey11,
-            darkIcons = true
-        )
-    }
+//    SideEffect {
+//        systemUiController.setSystemBarsColor(
+//            color = if (useDarkIcons)
+//                Green67 else Green67,
+//            darkIcons = true
+//        )
+//
+//        systemUiController.setNavigationBarColor(
+//            color = if (useDarkIcons)
+//                White else BlueGrey11,
+//            darkIcons = true
+//        )
+//    }
 
     Scaffold(
         bottomBar = { BottomNavBar(navController = navController, visible = bottomBarVisible) }
@@ -85,6 +86,7 @@ fun MainScreen() {
             languageNavGraph(navController)
             helpCenterNavGraph(navController)
             sendMoneyNavGraph(navController)
+            sendToNavGraph(navController)
         }
 
     }

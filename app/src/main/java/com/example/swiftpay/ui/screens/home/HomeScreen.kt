@@ -4,6 +4,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,6 +28,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,19 +42,45 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.navigation.NavDestinations
 import com.example.swiftpay.ui.navigation.NavDestinations.SendMoney.SEND_MONEY_MAIN
+import com.example.swiftpay.ui.navigation.NavDestinations.SendTo.SEND_TO_MAIN
 import com.example.swiftpay.ui.screens.home.components.Transaction
 import com.example.swiftpay.ui.screens.home.components.TransactionHistoryItem
 import com.example.swiftpay.ui.screens.home.components.TransactionsStickyHeader
 import com.example.swiftpay.ui.screens.home.components.transactions
 import com.example.swiftpay.ui.screens.main.components.MainTopBar
+import com.example.swiftpay.ui.theme.BlueGrey11
+import com.example.swiftpay.ui.theme.Green67
 import com.example.swiftpay.ui.theme.SwiftPayTheme
+import com.example.swiftpay.ui.theme.White
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreen(navController: NavController) {
 
     val groupedTransactions = transactions.groupBy { it.formattedDate }
+
+    val systemUiController = rememberSystemUiController()
+    val useDarkIcons = !isSystemInDarkTheme()
+    val coroutineScope = rememberCoroutineScope()
+
+
+    SideEffect {
+        systemUiController.setSystemBarsColor(
+            color = Green67,
+            darkIcons = useDarkIcons
+        )
+
+        systemUiController.setNavigationBarColor(
+            color = if (useDarkIcons)
+                White else BlueGrey11,
+            darkIcons = true
+        )
+    }
 
     Scaffold(
         topBar = { MainTopBar(onNotificationClick = { }, onLogoClick = { }) }
@@ -114,7 +143,9 @@ fun HomeScreen(navController: NavController) {
                                         .clip(CircleShape)
                                         .border(1.dp, Color.Black, CircleShape)
                                         .clickable {
-                                            navController.navigate(SEND_MONEY_MAIN)
+                                            coroutineScope.launch {
+                                                navController.navigate(SEND_TO_MAIN)
+                                            }
                                         }
                                 ) {
                                     Icon(

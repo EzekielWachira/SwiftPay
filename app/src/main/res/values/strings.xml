@@ -96,4 +96,5 @@
     <string name="help_center">Help Center</string>
     <string name="amount_to_send">Amount to Send</string>
     <string name="amount">%1$,.2f</string>
+    <string name="send_to">Send to</string>
 </resources>
