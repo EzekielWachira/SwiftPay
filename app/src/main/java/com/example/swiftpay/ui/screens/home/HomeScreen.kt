@@ -3,6 +3,7 @@ package com.example.swiftpay.ui.screens.home
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,6 +39,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.navigation.NavDestinations.SendMoney.SEND_MONEY_MAIN
 import com.example.swiftpay.ui.screens.home.components.Transaction
 import com.example.swiftpay.ui.screens.home.components.TransactionHistoryItem
 import com.example.swiftpay.ui.screens.home.components.TransactionsStickyHeader
@@ -111,6 +113,9 @@ fun HomeScreen(navController: NavController) {
                                         .size(60.dp)
                                         .clip(CircleShape)
                                         .border(1.dp, Color.Black, CircleShape)
+                                        .clickable {
+                                            navController.navigate(SEND_MONEY_MAIN)
+                                        }
                                 ) {
                                     Icon(
                                         painter = painterResource(id = R.drawable.send),

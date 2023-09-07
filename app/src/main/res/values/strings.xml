@@ -94,4 +94,6 @@
     <string name="contact_support">Contact Support</string>
     <string name="search">Search</string>
     <string name="help_center">Help Center</string>
+    <string name="amount_to_send">Amount to Send</string>
+    <string name="amount">%1$,.2f</string>
 </resources>

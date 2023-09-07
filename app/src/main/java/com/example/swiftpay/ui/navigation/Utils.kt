@@ -52,4 +52,9 @@ object NavDestinations {
         const val LANGUAGE = "language"
     }
 
+    object SendMoney {
+        const val SEND_MONEY_MAIN = "send_money_main"
+        const val SEND_MONEY = "send_money"
+    }
+
 }
