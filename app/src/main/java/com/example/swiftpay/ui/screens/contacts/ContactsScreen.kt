@@ -29,6 +29,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -65,7 +66,7 @@ fun ContactsScreen(navController: NavController) {
     val searchState by viewModel.searchState.collectAsStateWithLifecycle()
     val searchContacts by viewModel.contacts.collectAsStateWithLifecycle()
     var tabIndex by rememberSaveable {
-        mutableStateOf(0)
+        mutableIntStateOf(0)
     }
     var focusState by rememberSaveable {
         mutableStateOf(false)
@@ -116,7 +117,8 @@ fun ContactsScreen(navController: NavController) {
                 onClearButtonClicked = {
                     viewModel.onSearch("")
                     focusState = false
-                })
+                },
+                text = stringResource(R.string.search_contact))
 
             Spacer(modifier = Modifier.height(DpDimensions.Small))
 

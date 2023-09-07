@@ -42,6 +42,7 @@ import com.example.swiftpay.ui.theme.SwiftPayTheme
 fun SearchComponent(
     modifier: Modifier = Modifier,
     state: SearchState,
+    text: String,
     focusState: Boolean,
     onSearch: (String) -> Unit,
     onTextFieldFocus: (Boolean) -> Unit,
@@ -82,7 +83,7 @@ fun SearchComponent(
                 },
                 placeholder = {
                     Text(
-                        text = stringResource(R.string.search_contact),
+                        text = text,
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onTertiary
                     )

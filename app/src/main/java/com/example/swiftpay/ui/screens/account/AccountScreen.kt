@@ -30,6 +30,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
 import com.example.swiftpay.ui.navigation.NavDestinations
 import com.example.swiftpay.ui.navigation.NavDestinations.Account.PERSONAL_INFO_SCREEN
+import com.example.swiftpay.ui.navigation.NavDestinations.HelpCenter.HELP_CENTER_MAIN
+import com.example.swiftpay.ui.navigation.NavDestinations.Language.LANGUAGE_MAIN
 import com.example.swiftpay.ui.navigation.NavDestinations.NotificationSettings.NOTIFICATION_SETTINGS_SCREEN
 import com.example.swiftpay.ui.navigation.NavDestinations.Payment.PAYMENT_METHODS_ROUTE
 import com.example.swiftpay.ui.navigation.NavDestinations.Security.SECURITY_SCREEN
@@ -154,7 +156,7 @@ fun AccountScreen(navController: NavController) {
                         language = "English (US)",
                         modifier = Modifier.fillMaxWidth()
                     ) {
-
+                        navController.navigate(LANGUAGE_MAIN)
                     }
 
                     DarkModeItem(
@@ -177,7 +179,9 @@ fun AccountScreen(navController: NavController) {
                         icon = R.drawable.help,
                         title = stringResource(R.string.help),
                         modifier = Modifier.fillMaxWidth()
-                    ) { }
+                    ) {
+                        navController.navigate(HELP_CENTER_MAIN)
+                    }
 
                     AccountItem(
                         icon = R.drawable.privacy,

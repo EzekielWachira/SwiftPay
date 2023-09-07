@@ -90,4 +90,8 @@
     <string name="google_authenticator">Google Authenticator</string>
     <string name="device_management">Device Management</string>
     <string name="change_password">Change Password</string>
+    <string name="faq">FAQ</string>
+    <string name="contact_support">Contact Support</string>
+    <string name="search">Search</string>
+    <string name="help_center">Help Center</string>
 </resources>

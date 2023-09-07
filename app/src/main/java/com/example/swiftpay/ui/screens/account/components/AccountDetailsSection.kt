@@ -103,11 +103,5 @@ fun AccountDetailsSectionPrev() {
 data class User(
     val name: String,
     val email: String,
-    @DrawableRes val picture: Int = listOf(
-        R.drawable.person_1,
-        R.drawable.person_2,
-        R.drawable.person_3,
-        R.drawable.person_4,
-        R.drawable.person_5,
-    ).random()
+    @DrawableRes val picture: Int = R.drawable.person_1
 )

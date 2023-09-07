@@ -103,6 +103,15 @@ dependencies {
     implementation(libs.vico.compose)
     implementation(libs.vico.compose.m3)
     implementation(libs.vico.core)
+    implementation(libs.play.services.code.scanner)
+    // CameraX
+    implementation (libs.androidx.camera.camera2)
+    implementation (libs.androidx.camera.lifecycle)
+    implementation (libs.androidx.camera.view)
+
+    // Zxing
+    implementation (libs.core)
+    implementation (libs.gpsCoroutines)
 }
 
 class RoomSchemaArgProvider(

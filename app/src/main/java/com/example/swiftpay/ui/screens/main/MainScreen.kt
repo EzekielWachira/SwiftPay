@@ -18,6 +18,8 @@ import com.example.swiftpay.ui.navigation.BottomNavBar
 import com.example.swiftpay.ui.navigation.NavDestinations
 import com.example.swiftpay.ui.navigation.Screen
 import com.example.swiftpay.ui.navigation.accountNavGraph
+import com.example.swiftpay.ui.navigation.helpCenterNavGraph
+import com.example.swiftpay.ui.navigation.languageNavGraph
 import com.example.swiftpay.ui.navigation.mainNavGraph
 import com.example.swiftpay.ui.navigation.navigationSettings
 import com.example.swiftpay.ui.navigation.paymentMethodsNavGraph
@@ -44,7 +46,7 @@ fun MainScreen() {
     bottomBarVisible = when (navBackStackEntry?.destination?.route) {
         Screen.Home.route -> true
         Screen.Contacts.route -> true
-        Screen.Scan.route -> true
+//        Screen.Scan.route -> true
         Screen.Insights.route -> true
         Screen.Account.route -> true
         else -> false
@@ -79,6 +81,8 @@ fun MainScreen() {
             accountNavGraph(navController)
             navigationSettings(navController)
             securityNavGraph(navController)
+            languageNavGraph(navController)
+            helpCenterNavGraph(navController)
         }
 
     }

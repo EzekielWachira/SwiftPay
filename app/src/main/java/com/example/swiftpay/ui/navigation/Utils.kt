@@ -42,4 +42,14 @@ object NavDestinations {
         const val SECURITY = "security"
     }
 
+    object HelpCenter {
+        const val HELP_CENTER_MAIN = "help_center_main"
+        const val HELP_CENTER = "help_center"
+    }
+
+    object Language {
+        const val LANGUAGE_MAIN = "language_main"
+        const val LANGUAGE = "language"
+    }
+
 }
