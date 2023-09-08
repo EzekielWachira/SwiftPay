@@ -112,6 +112,8 @@ dependencies {
     // Zxing
     implementation (libs.core)
     implementation (libs.gpsCoroutines)
+    implementation("io.github.thechance101:chart:Beta-0.0.1")
+    implementation("com.carlosgub.kotlinm.charts:charts:1.0.2")
 }
 
 class RoomSchemaArgProvider(
