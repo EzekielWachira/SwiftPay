@@ -48,6 +48,7 @@ import com.example.swiftpay.ui.theme.DpDimensions
 import com.example.swiftpay.ui.theme.Green54
 import com.example.swiftpay.ui.theme.Green67
 import com.example.swiftpay.ui.theme.SwiftPayTheme
+import com.example.swiftpay.ui.theme.White
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
@@ -61,6 +62,12 @@ fun EnterAmountScreen(navController: NavController) {
         systemUiController.setSystemBarsColor(
             color = Green67,
             darkIcons = true
+        )
+
+        systemUiController.setNavigationBarColor(
+            color = if (useDarkIcons)
+                White else BlueGrey11,
+            darkIcons = useDarkIcons
         )
     }
 

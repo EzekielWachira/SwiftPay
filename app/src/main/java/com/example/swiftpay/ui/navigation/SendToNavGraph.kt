@@ -1,5 +1,8 @@
 package com.example.swiftpay.ui.navigation
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -17,7 +20,19 @@ fun NavGraphBuilder.sendToNavGraph(navController: NavController) {
         startDestination = SEND_TO,
         route = SEND_TO_MAIN
     ) {
-        composable(route = SEND_TO) {
+        composable(route = SEND_TO,
+            enterTransition = {
+                slideInVertically(
+                    animationSpec = tween(700),
+                    initialOffsetY = { it }
+                )
+            },
+            exitTransition = {
+                slideOutVertically (
+                    animationSpec = tween(700),
+                    targetOffsetY = { it }
+                )
+            }) {
             SendToScreen(navController)
         }
     }
