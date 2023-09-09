@@ -69,21 +69,6 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 @Composable
 fun SendToScreen(navController: NavController) {
 
-    val viewModel: ContactsViewModel = hiltViewModel()
-    val searchState by viewModel.searchState.collectAsStateWithLifecycle()
-    val searchContacts by viewModel.contacts.collectAsStateWithLifecycle()
-    var tabIndex by rememberSaveable {
-        mutableIntStateOf(0)
-    }
-    var focusState by rememberSaveable {
-        mutableStateOf(false)
-    }
-    val tabTitles = listOf(
-        stringResource(R.string.all_contacts),
-//        stringResource(R.string.phone_contacts),
-        stringResource(R.string.favorites),
-    )
-
     val systemUiController = rememberSystemUiController()
     val useDarkIcons = !isSystemInDarkTheme()
 
@@ -100,6 +85,23 @@ fun SendToScreen(navController: NavController) {
             darkIcons = true
         )
     }
+
+    val viewModel: ContactsViewModel = hiltViewModel()
+    val searchState by viewModel.searchState.collectAsStateWithLifecycle()
+    val searchContacts by viewModel.contacts.collectAsStateWithLifecycle()
+    var tabIndex by rememberSaveable {
+        mutableIntStateOf(0)
+    }
+    var focusState by rememberSaveable {
+        mutableStateOf(false)
+    }
+    val tabTitles = listOf(
+        stringResource(R.string.all_contacts),
+//        stringResource(R.string.phone_contacts),
+        stringResource(R.string.favorites),
+    )
+
+
 
     Scaffold(
         topBar = {

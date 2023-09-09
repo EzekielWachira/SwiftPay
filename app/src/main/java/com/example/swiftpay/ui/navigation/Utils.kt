@@ -55,6 +55,8 @@ object NavDestinations {
     object SendMoney {
         const val SEND_MONEY_MAIN = "send_money_main"
         const val SEND_MONEY = "send_money"
+        const val SEND_NOW = "send_now"
+        const val SEND_MONEY_RECEIPT ="send_money_receipt"
     }
 
     object SendTo {

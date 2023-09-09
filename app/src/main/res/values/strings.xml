@@ -96,5 +96,20 @@
     <string name="help_center">Help Center</string>
     <string name="amount_to_send">Amount to Send</string>
     <string name="amount">%1$,.2f</string>
+    <string name="amount_2">%1$,.0f</string>
     <string name="send_to">Send to</string>
+    <string name="send_now">Send Now</string>
+    <string name="enter_note">Enter note</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="recipient">Recipient</string>
+    <string name="add_notes">Add Notes</string>
+    <string name="cancel">Cancel</string>
+    <string name="send_money_2">Send Money</string>
+    <string name="share_receipt">Share Receipt</string>
+    <string name="download_receipt">Download Receipt</string>
+    <string name="withdraw_now">Withdraw Now</string>
+    <string name="change">Change</string>
+    <string name="withdraw_to">Withdraw to</string>
+    <string name="confirm_withdraw">Confirm Withdraw</string>
+    <string name="amount_to_withdraw">Amount to withdraw</string>
 </resources>

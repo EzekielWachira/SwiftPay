@@ -1,6 +1,7 @@
 package com.example.swiftpay.ui.screens.amount
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,23 +38,40 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.navigation.NavDestinations
+import com.example.swiftpay.ui.navigation.NavDestinations.SendMoney.SEND_NOW
 import com.example.swiftpay.ui.navigation.Screen
 import com.example.swiftpay.ui.screens.amount.components.NumberPad
 import com.example.swiftpay.ui.screens.common.AppBarWithTwoActions
+import com.example.swiftpay.ui.theme.BlueGrey11
 import com.example.swiftpay.ui.theme.DpDimensions
 import com.example.swiftpay.ui.theme.Green54
+import com.example.swiftpay.ui.theme.Green67
 import com.example.swiftpay.ui.theme.SwiftPayTheme
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun EnterAmountScreen(navController: NavController) {
 
+    val systemUiController = rememberSystemUiController()
+    val useDarkIcons = !isSystemInDarkTheme()
+
+
+    SideEffect {
+        systemUiController.setSystemBarsColor(
+            color = Green67,
+            darkIcons = true
+        )
+    }
+
     val viewModel: AmountViewModel = hiltViewModel()
     val amountState by viewModel.amountState.collectAsStateWithLifecycle()
+
 
     Scaffold(
         topBar = {
             AppBarWithTwoActions(
-                onLeftButtonClick = { navController.popBackStack(Screen.HOME, inclusive = true, saveState = true) },
+                onLeftButtonClick = { navController.popBackStack(Screen.HOME, inclusive = false, saveState = true) },
                 onRightButtonClick = { },
                 rightIcon = Icons.Outlined.ArrowBack,
                 leftIcon = Icons.Outlined.ArrowBack,
@@ -136,7 +155,9 @@ fun EnterAmountScreen(navController: NavController) {
                 Spacer(modifier = Modifier.height(DpDimensions.Dp20))
 
                 Button(
-                    onClick = { },
+                    onClick = {
+                        navController.navigate(SEND_NOW)
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(50.dp),
