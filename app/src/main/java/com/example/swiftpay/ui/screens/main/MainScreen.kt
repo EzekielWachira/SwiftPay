@@ -18,6 +18,7 @@ import com.example.swiftpay.ui.navigation.BottomNavBar
 import com.example.swiftpay.ui.navigation.NavDestinations
 import com.example.swiftpay.ui.navigation.Screen
 import com.example.swiftpay.ui.navigation.accountNavGraph
+import com.example.swiftpay.ui.navigation.addContactNavGraph
 import com.example.swiftpay.ui.navigation.addPaymentNavGraph
 import com.example.swiftpay.ui.navigation.helpCenterNavGraph
 import com.example.swiftpay.ui.navigation.languageNavGraph
@@ -95,6 +96,7 @@ fun MainScreen() {
             requestNavGraph(navController)
             topUpNavGraph(navController)
             withdrawNavGraph(navController)
+            addContactNavGraph(navController)
 
         }
 

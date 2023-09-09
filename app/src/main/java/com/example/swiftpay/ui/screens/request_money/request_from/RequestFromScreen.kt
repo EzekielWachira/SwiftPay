@@ -43,6 +43,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.example.swiftpay.R
 import com.example.swiftpay.ui.navigation.NavDestinations
+import com.example.swiftpay.ui.navigation.NavDestinations.Contacts.ADD_CONTACT_MAIN
 import com.example.swiftpay.ui.navigation.NavDestinations.RequestMoney.REQUEST_MONEY
 import com.example.swiftpay.ui.screens.common.AppBarWithTwoActions
 import com.example.swiftpay.ui.screens.contacts.ContactsViewModel
@@ -105,7 +106,9 @@ fun RequestFromScreen(navController: NavController) {
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = { },
+            FloatingActionButton(onClick = {
+                navController.navigate(ADD_CONTACT_MAIN)
+            },
                 containerColor = MaterialTheme.colorScheme.onPrimary
             ) {
                 Icon(imageVector = Icons.Outlined.Add

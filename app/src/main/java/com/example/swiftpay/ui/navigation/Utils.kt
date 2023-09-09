@@ -93,4 +93,9 @@ object NavDestinations {
         const val WITHDRAW_RECEIPT = "withdraw_receipt"
     }
 
+    object Contacts {
+        const val ADD_CONTACT_MAIN = "add_contact_main"
+        const val ADD_CONTACT = "add_contact"
+    }
+
 }

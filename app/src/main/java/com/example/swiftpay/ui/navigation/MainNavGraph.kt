@@ -10,8 +10,10 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.navigation
 import com.example.swiftpay.ui.navigation.NavDestinations.Account.PERSONAL_INFO
 import com.example.swiftpay.ui.navigation.NavDestinations.Account.PERSONAL_INFO_SCREEN
+import com.example.swiftpay.ui.navigation.NavDestinations.Contacts.ADD_CONTACT
 import com.example.swiftpay.ui.personal_info.PersonalInfoScreen
 import com.example.swiftpay.ui.screens.account.AccountScreen
+import com.example.swiftpay.ui.screens.add_contact.AddContactScreen
 import com.example.swiftpay.ui.screens.contacts.ContactsScreen
 import com.example.swiftpay.ui.screens.home.HomeScreen
 import com.example.swiftpay.ui.screens.insights.InsightsScreen

@@ -33,7 +33,6 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -45,13 +44,13 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.navigation.NavDestinations.Contacts.ADD_CONTACT_MAIN
 import com.example.swiftpay.ui.screens.contacts.components.ContactItem
 import com.example.swiftpay.ui.screens.contacts.components.ContactsAppBar
 import com.example.swiftpay.ui.screens.contacts.components.SearchComponent
 import com.example.swiftpay.ui.screens.contacts.components.contacts
 import com.example.swiftpay.ui.screens.contacts.components.favoriteContacts
 import com.example.swiftpay.ui.screens.home.components.TransactionsStickyHeader
-import com.example.swiftpay.ui.screens.home.components.transactions
 import com.example.swiftpay.ui.theme.BlueGrey11
 import com.example.swiftpay.ui.theme.DpDimensions
 import com.example.swiftpay.ui.theme.SwiftPayTheme
@@ -92,12 +91,16 @@ fun ContactsScreen(navController: NavController) {
     Scaffold(
         topBar = { ContactsAppBar(onMoreClick = { }, onLogoClick = {}) },
         floatingActionButton = {
-            FloatingActionButton(onClick = { },
+            FloatingActionButton(
+                onClick = {
+                    navController.navigate(ADD_CONTACT_MAIN)
+                },
                 containerColor = MaterialTheme.colorScheme.onPrimary
             ) {
-                Icon(imageVector = Icons.Outlined.Add
-                    , contentDescription = "add icon",
-                    tint = Color.Black)
+                Icon(
+                    imageVector = Icons.Outlined.Add, contentDescription = "add icon",
+                    tint = Color.Black
+                )
             }
         }
     ) { paddingValues ->
@@ -111,7 +114,8 @@ fun ContactsScreen(navController: NavController) {
                 )
                 .fillMaxSize()
         ) {
-            SearchComponent(state = searchState, onSearch = viewModel::onSearch,
+            SearchComponent(
+                state = searchState, onSearch = viewModel::onSearch,
                 onTextFieldFocus = { hasFocus ->
                     focusState = hasFocus
                 }, focusState = focusState,
@@ -119,7 +123,8 @@ fun ContactsScreen(navController: NavController) {
                     viewModel.onSearch("")
                     focusState = false
                 },
-                text = stringResource(R.string.search_contact))
+                text = stringResource(R.string.search_contact)
+            )
 
             Spacer(modifier = Modifier.height(DpDimensions.Small))
 
@@ -144,7 +149,9 @@ fun ContactsScreen(navController: NavController) {
                             )
                         }
 
-                        itemsIndexed(contacts, key = { id, con -> "$id" + con.email }) {index, contact ->
+                        itemsIndexed(
+                            contacts,
+                            key = { id, con -> "$id" + con.email }) { index, contact ->
                             ContactItem(contact = contact, onContactClick = {})
                         }
                     }
@@ -211,7 +218,9 @@ fun ContactsScreen(navController: NavController) {
                                     )
                                 }
 
-                                itemsIndexed(contacts, key = { id, con -> "$id" + con.email }) {index, contact ->
+                                itemsIndexed(
+                                    contacts,
+                                    key = { id, con -> "$id" + con.email }) { index, contact ->
                                     ContactItem(contact = contact, onContactClick = {})
                                 }
                             }
@@ -239,7 +248,9 @@ fun ContactsScreen(navController: NavController) {
                                     )
                                 }
 
-                                itemsIndexed(contacts, key = { id, con -> "$id" + con.email }) {index, contact ->
+                                itemsIndexed(
+                                    contacts,
+                                    key = { id, con -> "$id" + con.email }) { index, contact ->
                                     ContactItem(contact = contact, onContactClick = {})
                                 }
                             }

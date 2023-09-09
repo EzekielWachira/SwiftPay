@@ -120,4 +120,7 @@
     <string name="confirm_top_up">Confirm Topup</string>
     <string name="top_up_now">Top Up Now</string>
     <string name="request_money">Request Money</string>
+    <string name="add_new_contact">Add New Contact</string>
+    <string name="save_contact">Save Contact</string>
+    <string name="account_holder_name">Account Holder Name</string>
 </resources>
