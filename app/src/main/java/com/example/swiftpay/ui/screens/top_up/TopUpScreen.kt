@@ -1,5 +1,6 @@
 package com.example.swiftpay.ui.screens.top_up
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -30,20 +31,25 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
 import com.example.swiftpay.ui.navigation.NavDestinations
 import com.example.swiftpay.ui.navigation.Screen
 import com.example.swiftpay.ui.screens.amount.AmountViewModel
 import com.example.swiftpay.ui.screens.amount.components.NumberPad
 import com.example.swiftpay.ui.screens.common.AppBarWithTwoActions
+import com.example.swiftpay.ui.theme.BlueGrey11
 import com.example.swiftpay.ui.theme.DpDimensions
 import com.example.swiftpay.ui.theme.Green54
 import com.example.swiftpay.ui.theme.Green67
+import com.example.swiftpay.ui.theme.SwiftPayTheme
+import com.example.swiftpay.ui.theme.White
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
@@ -58,6 +64,12 @@ fun TopUpScreen(navController: NavController) {
             color = Green67,
             darkIcons = true
         )
+
+        systemUiController.setNavigationBarColor(
+            color = if (useDarkIcons)
+                White else BlueGrey11,
+            darkIcons = useDarkIcons
+        )
     }
 
     val viewModel: AmountViewModel = hiltViewModel()
@@ -67,7 +79,7 @@ fun TopUpScreen(navController: NavController) {
     Scaffold(
         topBar = {
             AppBarWithTwoActions(
-                onLeftButtonClick = { navController.popBackStack(Screen.HOME, inclusive = false, saveState = true) },
+                onLeftButtonClick = { navController.popBackStack() },
                 onRightButtonClick = { },
                 rightIcon = Icons.Outlined.ArrowBack,
                 leftIcon = Icons.Outlined.ArrowBack,
@@ -150,7 +162,7 @@ fun TopUpScreen(navController: NavController) {
 
                 Button(
                     onClick = {
-                        navController.navigate(NavDestinations.SendMoney.SEND_NOW)
+                        navController.navigate(NavDestinations.TopUp.SELECT_TOP_UP)
                     },
                     modifier = Modifier
                         .fillMaxWidth()
@@ -177,8 +189,15 @@ fun TopUpScreen(navController: NavController) {
                 )
             }
         }
-
     }
+}
 
 
+@Preview
+@Preview(uiMode = UI_MODE_NIGHT_YES)
+@Composable
+fun TopUpScreenPreview() {
+    SwiftPayTheme {
+        TopUpScreen(rememberNavController())
+    }
 }

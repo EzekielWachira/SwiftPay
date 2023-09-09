@@ -1,4 +1,4 @@
-package com.example.swiftpay.ui.screens.withdraw
+package com.example.swiftpay.ui.screens.request_money.request_amount
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.background
@@ -40,7 +40,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
 import com.example.swiftpay.ui.navigation.NavDestinations
-import com.example.swiftpay.ui.navigation.NavDestinations.Withdraw.WITHDRAW_TO
+import com.example.swiftpay.ui.navigation.NavDestinations.RequestMoney.REQUEST_NOW
 import com.example.swiftpay.ui.navigation.Screen
 import com.example.swiftpay.ui.screens.amount.AmountViewModel
 import com.example.swiftpay.ui.screens.amount.components.NumberPad
@@ -54,7 +54,7 @@ import com.example.swiftpay.ui.theme.White
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
-fun WithdrawScreen(navController: NavController) {
+fun RequestAmountScreen(navController: NavController) {
 
     val systemUiController = rememberSystemUiController()
     val useDarkIcons = !isSystemInDarkTheme()
@@ -84,7 +84,7 @@ fun WithdrawScreen(navController: NavController) {
                 onRightButtonClick = { },
                 rightIcon = Icons.Outlined.ArrowBack,
                 leftIcon = Icons.Outlined.ArrowBack,
-                toolbarTitle = stringResource(id = R.string.amount_to_withdraw),
+                toolbarTitle = stringResource(id = R.string.amount_to_request),
                 isRightIconVisible = false,
                 modifier = Modifier.background(MaterialTheme.colorScheme.onPrimary),
                 textColor = Color.Black,
@@ -163,7 +163,7 @@ fun WithdrawScreen(navController: NavController) {
 
                 Button(
                     onClick = {
-                        navController.navigate(WITHDRAW_TO)
+                        navController.navigate(REQUEST_NOW)
                     },
                     modifier = Modifier
                         .fillMaxWidth()
@@ -190,7 +190,6 @@ fun WithdrawScreen(navController: NavController) {
                 )
             }
         }
-
     }
 
 }
@@ -199,8 +198,8 @@ fun WithdrawScreen(navController: NavController) {
 @Preview
 @Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun WithdrawScreenPreview() {
+fun RequestAmountScreenPreview() {
     SwiftPayTheme {
-        WithdrawScreen(rememberNavController())
+        RequestAmountScreen(rememberNavController())
     }
 }

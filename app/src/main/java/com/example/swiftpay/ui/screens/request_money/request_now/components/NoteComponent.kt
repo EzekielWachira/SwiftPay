@@ -1,4 +1,4 @@
-package com.example.swiftpay.ui.screens.send_now.components
+package com.example.swiftpay.ui.screens.request_money.request_now.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -20,23 +20,22 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.screens.request_money.request_now.state.RequestState
 import com.example.swiftpay.ui.screens.send_now.state.SendMoneyState
 import com.example.swiftpay.ui.theme.SwiftPayTheme
 
 @Composable
 fun NoteComponent(
     modifier: Modifier = Modifier,
-    state: SendMoneyState,
+    state: RequestState,
     onNoteChange: (String) -> Unit
 ) {
 
-    Box(
-        modifier = modifier
-            .clip(RoundedCornerShape(10.dp))
-            .background(MaterialTheme.colorScheme.secondaryContainer, RoundedCornerShape(10.dp))
-            .height(200.dp),
-        contentAlignment = Alignment.TopCenter
-    ) {
+    Box(modifier = modifier
+        .clip(RoundedCornerShape(10.dp))
+        .background(MaterialTheme.colorScheme.secondaryContainer, RoundedCornerShape(10.dp))
+        .height(200.dp),
+        contentAlignment = Alignment.TopCenter) {
 
         TextField(
             value = state.note, onValueChange = { value ->
@@ -71,8 +70,8 @@ fun NoteComponent(
 @Composable
 fun NoteComponentPreview() {
     SwiftPayTheme {
-        NoteComponent(
-            state = SendMoneyState(),
+       NoteComponent(
+            state = RequestState(),
             onNoteChange = {})
     }
 }

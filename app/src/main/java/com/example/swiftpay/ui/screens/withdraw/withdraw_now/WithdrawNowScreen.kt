@@ -24,6 +24,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.navigation.NavDestinations.Withdraw.WITHDRAW_RECEIPT
 import com.example.swiftpay.ui.screens.common.AppBarWithTwoActions
 import com.example.swiftpay.ui.screens.common.TwoButtons
 import com.example.swiftpay.ui.screens.payment_methods.components.paymentMethods
@@ -122,8 +123,8 @@ fun WithdrawNowScreen(navController: NavController) {
             TwoButtons(
                 leftButtonText = stringResource(R.string.cancel),
                 rightButtonText = stringResource(R.string.confirm_withdraw),
-                onLeftButtonClick = { },
-                onRightButtonClick = { })
+                onLeftButtonClick = { navController.popBackStack() },
+                onRightButtonClick = { navController.navigate(WITHDRAW_RECEIPT) })
 
         }
 

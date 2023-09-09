@@ -20,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.example.swiftpay.R
 import com.example.swiftpay.ui.navigation.NavDestinations
+import com.example.swiftpay.ui.navigation.NavDestinations.AddPayment.ADD_PAYMENT_MAIN
 import com.example.swiftpay.ui.screens.common.AppBarWithTwoActions
 import com.example.swiftpay.ui.screens.payment_methods.components.PaymentMethodItem
 import com.example.swiftpay.ui.screens.payment_methods.components.paymentMethods
@@ -46,7 +47,7 @@ fun PaymentMethodsScreen(navController: NavController) {
         topBar = {
             AppBarWithTwoActions(
                 onLeftButtonClick = { navController.popBackStack() },
-                onRightButtonClick = { navController.navigate(NavDestinations.Payment.ADD_NEW_PAYMENT) },
+                onRightButtonClick = { navController.navigate(ADD_PAYMENT_MAIN) },
                 rightIcon = Icons.Outlined.Add,
                 leftIcon = Icons.Outlined.ArrowBack,
                 toolbarTitle = stringResource(id = R.string.payment_methods),

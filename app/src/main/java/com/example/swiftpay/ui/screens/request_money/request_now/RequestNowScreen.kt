@@ -1,5 +1,6 @@
-package com.example.swiftpay.ui.screens.send_now
+package com.example.swiftpay.ui.screens.request_money.request_now
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -32,11 +33,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
-import com.example.swiftpay.ui.navigation.NavDestinations.SendMoney.SEND_MONEY_RECEIPT
+import com.example.swiftpay.ui.navigation.NavDestinations.RequestMoney.REQUEST_RECEIPT
 import com.example.swiftpay.ui.screens.common.AppBarWithTwoActions
-import com.example.swiftpay.ui.screens.send_now.components.AccountDetailsComponent
-import com.example.swiftpay.ui.screens.send_now.components.AmountComponent
-import com.example.swiftpay.ui.screens.send_now.components.NoteComponent
+import com.example.swiftpay.ui.screens.request_money.request_now.components.AccountDetailsComponent
+import com.example.swiftpay.ui.screens.request_money.request_now.components.AmountComponent
+import com.example.swiftpay.ui.screens.request_money.request_now.components.NoteComponent
 import com.example.swiftpay.ui.theme.BlueGrey11
 import com.example.swiftpay.ui.theme.DpDimensions
 import com.example.swiftpay.ui.theme.SwiftPayTheme
@@ -44,10 +45,9 @@ import com.example.swiftpay.ui.theme.White
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
-fun SendNowScreen(navController: NavController) {
-
-    val viewModel: SendNowViewModel = hiltViewModel()
-    val state by viewModel.sendMoneyState.collectAsStateWithLifecycle()
+fun RequestNowScreen(navController: NavController) {
+    val viewModel: RequestNowViewModel = hiltViewModel()
+    val state by viewModel.requestState.collectAsStateWithLifecycle()
 
     val systemUiController = rememberSystemUiController()
     val useDarkIcons = !isSystemInDarkTheme()
@@ -67,7 +67,7 @@ fun SendNowScreen(navController: NavController) {
                 onRightButtonClick = { },
                 rightIcon = Icons.Outlined.ArrowBack,
                 leftIcon = Icons.Outlined.ArrowBack,
-                toolbarTitle = stringResource(id = R.string.send_now),
+                toolbarTitle = stringResource(id = R.string.request_now),
                 isRightIconVisible = false
             )
         }
@@ -155,9 +155,11 @@ fun SendNowScreen(navController: NavController) {
                         )
                     }
 
+//                                Spacer(modifier = modifier.width(10.dp))
+
                     Button(
                         onClick = {
-                            navController.navigate(SEND_MONEY_RECEIPT)
+                            navController.navigate(REQUEST_RECEIPT)
                         },
                         modifier = Modifier
                             .weight(1f)
@@ -167,7 +169,7 @@ fun SendNowScreen(navController: NavController) {
                         )
                     ) {
                         Text(
-                            text = stringResource(id = R.string.send_money_2),
+                            text = stringResource(id = R.string.request_money),
                             style = MaterialTheme.typography.titleSmall,
                             color = MaterialTheme.colorScheme.onBackground,
                         )
@@ -179,13 +181,14 @@ fun SendNowScreen(navController: NavController) {
         }
 
     }
-
 }
 
+
 @Preview
+@Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun SendNowScreenPreview() {
+fun RequestNowScreenPreview() {
     SwiftPayTheme {
-        SendNowScreen(rememberNavController())
+        RequestNowScreen(rememberNavController())
     }
 }

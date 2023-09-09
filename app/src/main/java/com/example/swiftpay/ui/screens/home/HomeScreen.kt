@@ -43,8 +43,11 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
 import com.example.swiftpay.ui.navigation.NavDestinations
+import com.example.swiftpay.ui.navigation.NavDestinations.RequestMoney.REQUEST_MONEY_MAIN
 import com.example.swiftpay.ui.navigation.NavDestinations.SendMoney.SEND_MONEY_MAIN
 import com.example.swiftpay.ui.navigation.NavDestinations.SendTo.SEND_TO_MAIN
+import com.example.swiftpay.ui.navigation.NavDestinations.TopUp.TOP_UP_MAIN
+import com.example.swiftpay.ui.navigation.NavDestinations.Withdraw.WITHDRAW_MAIN
 import com.example.swiftpay.ui.screens.home.components.Transaction
 import com.example.swiftpay.ui.screens.home.components.TransactionHistoryItem
 import com.example.swiftpay.ui.screens.home.components.TransactionsStickyHeader
@@ -72,7 +75,7 @@ fun HomeScreen(navController: NavController) {
     SideEffect {
         systemUiController.setSystemBarsColor(
             color = Green67,
-            darkIcons = useDarkIcons
+            darkIcons = true
         )
 
         systemUiController.setNavigationBarColor(
@@ -175,6 +178,11 @@ fun HomeScreen(navController: NavController) {
                                         .size(60.dp)
                                         .clip(CircleShape)
                                         .border(1.dp, Color.Black, CircleShape)
+                                        .clickable {
+                                            coroutineScope.launch {
+                                                navController.navigate(REQUEST_MONEY_MAIN)
+                                            }
+                                        }
                                 ) {
                                     Icon(
                                         painter = painterResource(id = R.drawable.receive_1),
@@ -204,6 +212,11 @@ fun HomeScreen(navController: NavController) {
                                         .size(60.dp)
                                         .clip(CircleShape)
                                         .border(1.dp, Color.Black, CircleShape)
+                                        .clickable {
+                                            coroutineScope.launch {
+                                                navController.navigate(TOP_UP_MAIN)
+                                            }
+                                        }
                                 ) {
                                     Icon(
                                         painter = painterResource(id = R.drawable.top_up),
@@ -232,6 +245,11 @@ fun HomeScreen(navController: NavController) {
                                         .size(60.dp)
                                         .clip(CircleShape)
                                         .border(1.dp, Color.Black, CircleShape)
+                                        .clickable {
+                                            coroutineScope.launch {
+                                                navController.navigate(WITHDRAW_MAIN)
+                                            }
+                                        }
                                 ) {
                                     Icon(
                                         painter = painterResource(id = R.drawable.withdraw),

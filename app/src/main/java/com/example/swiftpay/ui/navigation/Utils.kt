@@ -24,6 +24,11 @@ object NavDestinations {
     object Payment {
         const val PAYMENT_METHODS_ROUTE = "payment_methods_route"
         const val PAYMENT_METHODS = "payment_methods"
+
+    }
+
+    object AddPayment {
+        const val ADD_PAYMENT_MAIN = "add_payment_payment"
         const val ADD_NEW_PAYMENT = "add_new_payment"
     }
 
@@ -62,6 +67,30 @@ object NavDestinations {
     object SendTo {
         const val SEND_TO_MAIN = "send_to_main"
         const val SEND_TO = "send_to"
+    }
+
+    object RequestMoney {
+        const val REQUEST_MONEY_MAIN = "request_money_main"
+        const val REQUEST_MONEY = "request_money"
+        const val REQUEST_NOW = "request_now"
+        const val REQUEST_FROM = "request_from"
+        const val REQUEST_RECEIPT = "request_receipt"
+    }
+
+    object TopUp {
+        const val TOP_UP_MAIN = "top_up_main"
+        const val TOP_UP_AMOUNT = "top_up_amount"
+        const val SELECT_TOP_UP = "select_top_up"
+        const val TOP_UP_NOW = "top_up_now"
+        const val TOP_UP_RECEIPT = "top_up_receipt"
+    }
+
+    object Withdraw {
+        const val WITHDRAW_MAIN = "withdraw_main"
+        const val WITHDRAW = "withdraw"
+        const val WITHDRAW_TO = "withdraw_to"
+        const val WITHDRAW_NOW = "withdraw_now"
+        const val WITHDRAW_RECEIPT = "withdraw_receipt"
     }
 
 }

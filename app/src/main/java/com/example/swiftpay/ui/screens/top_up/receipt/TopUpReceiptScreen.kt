@@ -34,7 +34,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
 import com.example.swiftpay.ui.screens.common.AppBarWithTwoActions
 import com.example.swiftpay.ui.screens.common.TwoButtons
-import com.example.swiftpay.ui.screens.request_money_receipt.components.RequestMoneyReceiptDetails
+import com.example.swiftpay.ui.screens.request_money.request_money_receipt.components.RequestMoneyReceiptDetails
 import com.example.swiftpay.ui.screens.top_up.receipt.components.TopUpReceiptDetails
 import com.example.swiftpay.ui.theme.BlueGrey11
 import com.example.swiftpay.ui.theme.DpDimensions

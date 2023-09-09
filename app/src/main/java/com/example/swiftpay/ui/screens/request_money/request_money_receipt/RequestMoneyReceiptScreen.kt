@@ -1,4 +1,4 @@
-package com.example.swiftpay.ui.screens.request_money_receipt
+package com.example.swiftpay.ui.screens.request_money.request_money_receipt
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -32,7 +32,7 @@ import com.example.swiftpay.R
 import com.example.swiftpay.ui.screens.common.AppBarWithTwoActions
 import com.example.swiftpay.ui.screens.common.TwoButtons
 import com.example.swiftpay.ui.screens.receipt.components.ReceiptDetails
-import com.example.swiftpay.ui.screens.request_money_receipt.components.RequestMoneyReceiptDetails
+import com.example.swiftpay.ui.screens.request_money.request_money_receipt.components.RequestMoneyReceiptDetails
 import com.example.swiftpay.ui.theme.BlueGrey11
 import com.example.swiftpay.ui.theme.DpDimensions
 import com.example.swiftpay.ui.theme.White

@@ -1,4 +1,4 @@
-package com.example.swiftpay.ui.screens.request_money_receipt.components
+package com.example.swiftpay.ui.screens.request_money.request_money_receipt.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column

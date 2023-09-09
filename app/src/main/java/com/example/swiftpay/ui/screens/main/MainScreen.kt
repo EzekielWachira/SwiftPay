@@ -18,14 +18,18 @@ import com.example.swiftpay.ui.navigation.BottomNavBar
 import com.example.swiftpay.ui.navigation.NavDestinations
 import com.example.swiftpay.ui.navigation.Screen
 import com.example.swiftpay.ui.navigation.accountNavGraph
+import com.example.swiftpay.ui.navigation.addPaymentNavGraph
 import com.example.swiftpay.ui.navigation.helpCenterNavGraph
 import com.example.swiftpay.ui.navigation.languageNavGraph
 import com.example.swiftpay.ui.navigation.mainNavGraph
 import com.example.swiftpay.ui.navigation.navigationSettings
 import com.example.swiftpay.ui.navigation.paymentMethodsNavGraph
+import com.example.swiftpay.ui.navigation.requestNavGraph
 import com.example.swiftpay.ui.navigation.securityNavGraph
 import com.example.swiftpay.ui.navigation.sendMoneyNavGraph
 import com.example.swiftpay.ui.navigation.sendToNavGraph
+import com.example.swiftpay.ui.navigation.topUpNavGraph
+import com.example.swiftpay.ui.navigation.withdrawNavGraph
 import com.example.swiftpay.ui.theme.BlueGrey11
 import com.example.swiftpay.ui.theme.Green67
 import com.example.swiftpay.ui.theme.SwiftPayTheme
@@ -78,15 +82,20 @@ fun MainScreen() {
             modifier = Modifier.padding(paddingValues)
         ) {
 
-            mainNavGraph(navController = navController)
+            mainNavGraph(navController)
             paymentMethodsNavGraph(navController)
             accountNavGraph(navController)
+            addPaymentNavGraph(navController)
             navigationSettings(navController)
             securityNavGraph(navController)
             languageNavGraph(navController)
             helpCenterNavGraph(navController)
             sendMoneyNavGraph(navController)
             sendToNavGraph(navController)
+            requestNavGraph(navController)
+            topUpNavGraph(navController)
+            withdrawNavGraph(navController)
+
         }
 
     }

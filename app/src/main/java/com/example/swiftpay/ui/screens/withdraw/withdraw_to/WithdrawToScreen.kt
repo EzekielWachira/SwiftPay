@@ -32,6 +32,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
 import com.example.swiftpay.ui.navigation.NavDestinations
+import com.example.swiftpay.ui.navigation.NavDestinations.AddPayment.ADD_PAYMENT_MAIN
+import com.example.swiftpay.ui.navigation.NavDestinations.Withdraw.WITHDRAW_NOW
 import com.example.swiftpay.ui.screens.common.AppBarWithTwoActions
 import com.example.swiftpay.ui.screens.payment_methods.components.paymentMethods
 import com.example.swiftpay.ui.screens.withdraw.withdraw_to.components.PaymentMethodItem
@@ -61,7 +63,7 @@ fun WithdrawToScreen(navController: NavController) {
         topBar = {
             AppBarWithTwoActions(
                 onLeftButtonClick = { navController.popBackStack() },
-                onRightButtonClick = { navController.navigate(NavDestinations.Payment.ADD_NEW_PAYMENT) },
+                onRightButtonClick = { navController.navigate(ADD_PAYMENT_MAIN) },
                 rightIcon = Icons.Outlined.Add,
                 leftIcon = Icons.Outlined.ArrowBack,
                 toolbarTitle = stringResource(id = R.string.withdraw_to),
@@ -112,7 +114,7 @@ fun WithdrawToScreen(navController: NavController) {
                 ) {
 
                     Button(
-                        onClick = {  },
+                        onClick = { navController.navigate(WITHDRAW_NOW) },
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(50.dp),

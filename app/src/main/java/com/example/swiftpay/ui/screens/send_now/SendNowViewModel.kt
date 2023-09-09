@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
-class SendNowViewModel @Inject constructor(): ViewModel() {
+class SendNowViewModel @Inject constructor() : ViewModel() {
 
     private val _sendMoneyState = MutableStateFlow(SendMoneyState())
     val sendMoneyState get() = _sendMoneyState.asStateFlow()

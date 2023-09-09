@@ -80,6 +80,7 @@ fun ContactsScreen(navController: NavController) {
     val systemUiController = rememberSystemUiController()
     val useDarkIcons = !isSystemInDarkTheme()
 
+
     SideEffect {
         systemUiController.setSystemBarsColor(
             color = if (useDarkIcons)
