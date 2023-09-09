@@ -96,6 +96,7 @@ object NavDestinations {
     object Contacts {
         const val ADD_CONTACT_MAIN = "add_contact_main"
         const val ADD_CONTACT = "add_contact"
+        const val CONTACT_DETAILS = "contact_details"
     }
 
 }

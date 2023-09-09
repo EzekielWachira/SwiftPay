@@ -44,7 +44,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.navigation.NavDestinations
 import com.example.swiftpay.ui.navigation.NavDestinations.Contacts.ADD_CONTACT_MAIN
+import com.example.swiftpay.ui.navigation.NavDestinations.Contacts.CONTACT_DETAILS
 import com.example.swiftpay.ui.screens.contacts.components.ContactItem
 import com.example.swiftpay.ui.screens.contacts.components.ContactsAppBar
 import com.example.swiftpay.ui.screens.contacts.components.SearchComponent
@@ -152,7 +154,7 @@ fun ContactsScreen(navController: NavController) {
                         itemsIndexed(
                             contacts,
                             key = { id, con -> "$id" + con.email }) { index, contact ->
-                            ContactItem(contact = contact, onContactClick = {})
+                            ContactItem(contact = contact, onContactClick = {  navController.navigate(CONTACT_DETAILS)})
                         }
                     }
                 }
@@ -221,7 +223,9 @@ fun ContactsScreen(navController: NavController) {
                                 itemsIndexed(
                                     contacts,
                                     key = { id, con -> "$id" + con.email }) { index, contact ->
-                                    ContactItem(contact = contact, onContactClick = {})
+                                    ContactItem(contact = contact, onContactClick = {
+                                        navController.navigate(CONTACT_DETAILS)
+                                    })
                                 }
                             }
                         }
@@ -251,7 +255,9 @@ fun ContactsScreen(navController: NavController) {
                                 itemsIndexed(
                                     contacts,
                                     key = { id, con -> "$id" + con.email }) { index, contact ->
-                                    ContactItem(contact = contact, onContactClick = {})
+                                    ContactItem(contact = contact, onContactClick = {
+                                        navController.navigate(CONTACT_DETAILS)
+                                    })
                                 }
                             }
                         }
