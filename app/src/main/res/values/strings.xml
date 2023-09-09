@@ -112,4 +112,6 @@
     <string name="withdraw_to">Withdraw to</string>
     <string name="confirm_withdraw">Confirm Withdraw</string>
     <string name="amount_to_withdraw">Amount to withdraw</string>
+    <string name="amount_to_top_up">Amount to Top Up</string>
+    <string name="select_top_up_method">Select Top Up Method</string>
 </resources>
