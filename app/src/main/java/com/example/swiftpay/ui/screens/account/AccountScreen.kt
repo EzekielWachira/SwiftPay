@@ -40,10 +40,11 @@ import com.example.swiftpay.ui.screens.account.components.AccountItem
 import com.example.swiftpay.ui.screens.account.components.CustomDivider
 import com.example.swiftpay.ui.screens.account.components.DarkModeItem
 import com.example.swiftpay.ui.screens.account.components.LanguageItem
+import com.example.swiftpay.ui.screens.account.components.LogoutConfirmationBottomSheet
 import com.example.swiftpay.ui.screens.account.components.LogoutItem
 import com.example.swiftpay.ui.screens.account.components.QRCodeBottomSheet
 import com.example.swiftpay.ui.screens.common.CommonAppBar
-import com.example.swiftpay.ui.screens.sign_in.state.SwitchState
+import com.example.swiftpay.ui.screens.sign_in.SignInViewModel
 import com.example.swiftpay.ui.theme.BlueGrey11
 import com.example.swiftpay.ui.theme.DpDimensions
 import com.example.swiftpay.ui.theme.SwiftPayTheme
@@ -59,8 +60,13 @@ fun AccountScreen(navController: NavController) {
     val bottomSheetState = rememberModalBottomSheetState()
     val coroutineScope = rememberCoroutineScope()
     val viewModel: AccountViewModel = hiltViewModel()
+    val signInViewModel: SignInViewModel = hiltViewModel()
     val switchState by viewModel.switchState.collectAsStateWithLifecycle()
     var isSheetOpen by rememberSaveable {
+        mutableStateOf(false)
+    }
+
+    var isLogoutSheetOpen by rememberSaveable {
         mutableStateOf(false)
     }
 
@@ -199,7 +205,9 @@ fun AccountScreen(navController: NavController) {
                         icon = R.drawable.logout,
                         title = stringResource(R.string.logout),
                         modifier = Modifier.fillMaxWidth()
-                    ) {}
+                    ) {
+                        isLogoutSheetOpen = true
+                    }
 
                     Spacer(modifier = Modifier.height(30.dp))
 
@@ -213,6 +221,25 @@ fun AccountScreen(navController: NavController) {
                     isFullScreen = false,
                     cornerRadius = DpDimensions.Dp20
                 ) { isSheetOpen = false }
+            }
+
+            if (isLogoutSheetOpen) {
+                LogoutConfirmationBottomSheet(
+                    bottomSheetState = bottomSheetState,
+                    onDismiss = { isLogoutSheetOpen = false },
+                    onLogout = {
+                        navController.navigate(NavDestinations.Auth.AUTH) {
+                            popUpTo(NavDestinations.MAIN) {
+                                inclusive = false
+                            }
+                        }.also {
+                            signInViewModel.saveIsLoggedIn(false)
+                        }
+                    },
+                    onCancel = {
+                        isLogoutSheetOpen = false
+                    }
+                )
             }
 
 

@@ -32,6 +32,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.ehsanmsz.mszprogressindicator.progressindicator.BallSpinFadeLoaderProgressIndicator
@@ -51,10 +53,12 @@ fun SplashScreen(navController: NavController) {
     val systemUiController = rememberSystemUiController()
     val useDarkIcons = !isSystemInDarkTheme()
     val coroutineScope = rememberCoroutineScope()
+    val viewModel: SplashViewModel = hiltViewModel()
+    val isLoggedIn by viewModel.isLoggedIn.collectAsStateWithLifecycle(initialValue = false)
 
-    var isLoggedIn by rememberSaveable {
-        mutableStateOf(false)
-    }
+//    var isLoggedIn by rememberSaveable {
+//        mutableStateOf(false)
+//    }
 
     SideEffect {
         systemUiController.setSystemBarsColor(

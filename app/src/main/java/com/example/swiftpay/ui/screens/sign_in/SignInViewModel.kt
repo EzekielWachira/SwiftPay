@@ -1,6 +1,8 @@
 package com.example.swiftpay.ui.screens.sign_in
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.swiftpay.data.repository.PreferenceRepository
 import com.example.swiftpay.extensions.isValidEmail
 import com.example.swiftpay.extensions.isValidPassword
 import com.example.swiftpay.ui.screens.sign_in.state.EmailPasswordState
@@ -9,10 +11,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SignInViewModel @Inject constructor(): ViewModel(){
+class SignInViewModel @Inject constructor(
+    private val preferenceRepository: PreferenceRepository
+): ViewModel(){
 
     private var _emailPasswordState = MutableStateFlow(EmailPasswordState())
     val emailPasswordState get() = _emailPasswordState.asStateFlow()
@@ -45,4 +50,10 @@ class SignInViewModel @Inject constructor(): ViewModel(){
         }
     }
 
+
+    fun saveIsLoggedIn(isLoggedIn: Boolean) {
+        viewModelScope.launch {
+            preferenceRepository.saveUserLoggedInStatus(isLoggedIn)
+        }
+    }
 }

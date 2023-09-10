@@ -158,6 +158,8 @@ fun SignInScreen(navController: NavController) {
                         popUpTo(NavDestinations.Auth.AUTH_MAIN) {
                             inclusive = false
                         }
+                    }.also {
+                        viewModel.saveIsLoggedIn(true)
                     }
                 }
             )

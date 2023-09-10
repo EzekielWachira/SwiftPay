@@ -1,5 +1,8 @@
 package com.example.swiftpay.ui.screens.main
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -12,8 +15,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navigation
 import com.example.swiftpay.ui.navigation.BottomNavBar
 import com.example.swiftpay.ui.navigation.NavDestinations
 import com.example.swiftpay.ui.navigation.NavDestinations.Auth.AUTH_MAIN
@@ -34,6 +39,7 @@ import com.example.swiftpay.ui.navigation.sendMoneyNavGraph
 import com.example.swiftpay.ui.navigation.sendToNavGraph
 import com.example.swiftpay.ui.navigation.topUpNavGraph
 import com.example.swiftpay.ui.navigation.withdrawNavGraph
+import com.example.swiftpay.ui.screens.auth.AuthScreen
 import com.example.swiftpay.ui.theme.BlueGrey11
 import com.example.swiftpay.ui.theme.Green67
 import com.example.swiftpay.ui.theme.SwiftPayTheme
@@ -104,6 +110,26 @@ fun MainScreen() {
             topUpNavGraph(navController)
             withdrawNavGraph(navController)
             addContactNavGraph(navController)
+            navigation(
+                route = NavDestinations.Auth.AUTH,
+                startDestination = "authentication"
+            ) {
+                composable(route = "authentication",
+                    enterTransition = {
+                        slideInVertically(
+                            animationSpec = tween(700),
+                            initialOffsetY = { it }
+                        )
+                    },
+                    exitTransition = {
+                        slideOutVertically (
+                            animationSpec = tween(700),
+                            targetOffsetY = { it }
+                        )
+                    }) {
+                    AuthScreen()
+                }
+            }
 
         }
 
