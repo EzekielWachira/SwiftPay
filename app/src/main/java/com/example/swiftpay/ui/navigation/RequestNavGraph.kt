@@ -1,6 +1,9 @@
 package com.example.swiftpay.ui.navigation
 
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -23,19 +26,67 @@ fun NavGraphBuilder.requestNavGraph(navController: NavController) {
         startDestination = REQUEST_FROM,
         route = REQUEST_MONEY_MAIN
     ) {
-        composable(route = REQUEST_FROM) {
+        composable(route = REQUEST_FROM,
+            enterTransition = {
+                slideInVertically(
+                    animationSpec = tween(700),
+                    initialOffsetY = { it }
+                )
+            },
+            exitTransition = {
+                slideOutVertically (
+                    animationSpec = tween(700),
+                    targetOffsetY = { it }
+                )
+            }) {
             RequestFromScreen(navController)
         }
 
-        composable(route = REQUEST_MONEY) {
+        composable(route = REQUEST_MONEY,
+            enterTransition = {
+                slideInVertically(
+                    animationSpec = tween(700),
+                    initialOffsetY = { it }
+                )
+            },
+            exitTransition = {
+                slideOutVertically (
+                    animationSpec = tween(700),
+                    targetOffsetY = { it }
+                )
+            }) {
             RequestAmountScreen(navController)
         }
 
-        composable(route = REQUEST_NOW) {
+        composable(route = REQUEST_NOW,
+            enterTransition = {
+                slideInVertically(
+                    animationSpec = tween(700),
+                    initialOffsetY = { it }
+                )
+            },
+            exitTransition = {
+                slideOutVertically (
+                    animationSpec = tween(700),
+                    targetOffsetY = { it }
+                )
+            }) {
             RequestNowScreen(navController)
         }
 
-        composable(route = REQUEST_RECEIPT) {
+        composable(route = REQUEST_RECEIPT,
+            enterTransition = {
+                slideInVertically(
+                    animationSpec = tween(700),
+                    initialOffsetY = { it }
+                )
+            },
+            exitTransition = {
+                slideOutVertically (
+                    animationSpec = tween(700),
+                    targetOffsetY = { it }
+                )
+            }) {
             RequestMoneyReceiptScreen(navController)
         }
     }
