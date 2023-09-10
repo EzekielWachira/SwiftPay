@@ -48,6 +48,7 @@ import com.example.swiftpay.ui.navigation.NavDestinations.RequestMoney.REQUEST_M
 import com.example.swiftpay.ui.navigation.NavDestinations.SendMoney.SEND_MONEY_MAIN
 import com.example.swiftpay.ui.navigation.NavDestinations.SendTo.SEND_TO_MAIN
 import com.example.swiftpay.ui.navigation.NavDestinations.TopUp.TOP_UP_MAIN
+import com.example.swiftpay.ui.navigation.NavDestinations.Transaction.TRANSACTION_HISTORY
 import com.example.swiftpay.ui.navigation.NavDestinations.Withdraw.WITHDRAW_MAIN
 import com.example.swiftpay.ui.screens.home.components.Transaction
 import com.example.swiftpay.ui.screens.home.components.TransactionHistoryItem
@@ -274,7 +275,9 @@ fun HomeScreen(navController: NavController) {
                         Spacer(modifier = Modifier.height(30.dp))
                     }
 
-                    TransactionHistorySection(modifier = Modifier.fillMaxWidth(), onViewAllClicked = { })
+                    TransactionHistorySection(modifier = Modifier.fillMaxWidth(), onViewAllClicked = {
+                        navController.navigate(TRANSACTION_HISTORY)
+                    })
                 }
 
                 groupedTransactions.forEach { (date, transactions) ->

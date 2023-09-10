@@ -46,6 +46,10 @@ object NavDestinations {
         const val NOTIFICATIONS = "notifications"
     }
 
+    object Transaction {
+        const val TRANSACTION_HISTORY = "transaction_history"
+    }
+
     object Security {
         const val SECURITY_SCREEN = "security_screen"
         const val SECURITY = "security"

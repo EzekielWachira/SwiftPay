@@ -59,3 +59,11 @@ val filters = listOf(
     Filter(title = "Payment", isSelected = false),
     Filter(title = "Balance", isSelected = false),
 )
+
+val transactionFilters = listOf(
+    Filter(title = "All", isSelected = true),
+    Filter(title = "Income", isSelected = false),
+    Filter(title = "Sent", isSelected = false),
+    Filter(title = "Request", isSelected = false),
+    Filter(title = "Withdraw", isSelected = false)
+)
