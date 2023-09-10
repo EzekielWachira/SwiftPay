@@ -43,6 +43,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
 import com.example.swiftpay.ui.navigation.NavDestinations
+import com.example.swiftpay.ui.navigation.NavDestinations.Notifications.NOTIFICATIONS
 import com.example.swiftpay.ui.navigation.NavDestinations.RequestMoney.REQUEST_MONEY_MAIN
 import com.example.swiftpay.ui.navigation.NavDestinations.SendMoney.SEND_MONEY_MAIN
 import com.example.swiftpay.ui.navigation.NavDestinations.SendTo.SEND_TO_MAIN
@@ -86,7 +87,7 @@ fun HomeScreen(navController: NavController) {
     }
 
     Scaffold(
-        topBar = { MainTopBar(onNotificationClick = { }, onLogoClick = { }) }
+        topBar = { MainTopBar(onNotificationClick = { navController.navigate(NOTIFICATIONS) }, onLogoClick = { }) }
     ) { paddingValues ->
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

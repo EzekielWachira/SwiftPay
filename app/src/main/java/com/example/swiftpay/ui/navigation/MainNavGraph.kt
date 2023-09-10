@@ -12,6 +12,7 @@ import com.example.swiftpay.ui.navigation.NavDestinations.Account.PERSONAL_INFO
 import com.example.swiftpay.ui.navigation.NavDestinations.Account.PERSONAL_INFO_SCREEN
 import com.example.swiftpay.ui.navigation.NavDestinations.Contacts.ADD_CONTACT
 import com.example.swiftpay.ui.navigation.NavDestinations.Contacts.CONTACT_DETAILS
+import com.example.swiftpay.ui.navigation.NavDestinations.Notifications.NOTIFICATIONS
 import com.example.swiftpay.ui.personal_info.PersonalInfoScreen
 import com.example.swiftpay.ui.screens.account.AccountScreen
 import com.example.swiftpay.ui.screens.add_contact.AddContactScreen
@@ -19,6 +20,7 @@ import com.example.swiftpay.ui.screens.contact_details.ContactDetailsScreen
 import com.example.swiftpay.ui.screens.contacts.ContactsScreen
 import com.example.swiftpay.ui.screens.home.HomeScreen
 import com.example.swiftpay.ui.screens.insights.InsightsScreen
+import com.example.swiftpay.ui.screens.notifications.NotificationsScreen
 import com.example.swiftpay.ui.screens.scan.ScanScreen
 
 fun NavGraphBuilder.mainNavGraph(navController: NavController) {
@@ -117,6 +119,22 @@ fun NavGraphBuilder.mainNavGraph(navController: NavController) {
                 )
             }) {
             ContactDetailsScreen(navController)
+        }
+
+        composable(route = NOTIFICATIONS,
+            enterTransition = {
+                slideInVertically(
+                    animationSpec = tween(700),
+                    initialOffsetY = { it }
+                )
+            },
+            exitTransition = {
+                slideOutVertically (
+                    animationSpec = tween(700),
+                    targetOffsetY = { it }
+                )
+            }) {
+            NotificationsScreen(navController)
         }
 
     }

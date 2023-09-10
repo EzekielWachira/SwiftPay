@@ -42,6 +42,10 @@ object NavDestinations {
         const val NOTIFICATION_SETTINGS = "notification_settings"
     }
 
+    object Notifications {
+        const val NOTIFICATIONS = "notifications"
+    }
+
     object Security {
         const val SECURITY_SCREEN = "security_screen"
         const val SECURITY = "security"
