@@ -16,10 +16,13 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.ui.navigation.BottomNavBar
 import com.example.swiftpay.ui.navigation.NavDestinations
+import com.example.swiftpay.ui.navigation.NavDestinations.Auth.AUTH_MAIN
+import com.example.swiftpay.ui.navigation.NavDestinations.MAIN
 import com.example.swiftpay.ui.navigation.Screen
 import com.example.swiftpay.ui.navigation.accountNavGraph
 import com.example.swiftpay.ui.navigation.addContactNavGraph
 import com.example.swiftpay.ui.navigation.addPaymentNavGraph
+import com.example.swiftpay.ui.navigation.authNavGraph
 import com.example.swiftpay.ui.navigation.helpCenterNavGraph
 import com.example.swiftpay.ui.navigation.languageNavGraph
 import com.example.swiftpay.ui.navigation.mainNavGraph
@@ -42,6 +45,10 @@ fun MainScreen() {
 
     var bottomBarVisible by rememberSaveable {
         mutableStateOf(false)
+    }
+
+    var isLoggedIn by rememberSaveable {
+        mutableStateOf(true)
     }
 
     val navController = rememberNavController()
@@ -79,7 +86,7 @@ fun MainScreen() {
 
         NavHost(
             navController = navController,
-            startDestination = NavDestinations.MAIN,
+            startDestination = MAIN,
             modifier = Modifier.padding(paddingValues)
         ) {
 

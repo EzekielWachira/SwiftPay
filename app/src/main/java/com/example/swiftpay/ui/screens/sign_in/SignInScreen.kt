@@ -25,7 +25,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.navigation.NavDestinations
+import com.example.swiftpay.ui.navigation.NavDestinations.Auth.CREATE_ACCOUNT
+import com.example.swiftpay.ui.navigation.NavDestinations.Auth.FORGOT_PASSWORD
 import com.example.swiftpay.ui.screens.common.AppBar
 import com.example.swiftpay.ui.screens.common.BottomButtonSection
 import com.example.swiftpay.ui.screens.common.EmailSection
@@ -37,7 +42,7 @@ import com.example.swiftpay.ui.theme.White
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
-fun SignInScreen() {
+fun SignInScreen(navController: NavController) {
 
     val systemUiController = rememberSystemUiController()
     val useDarkIcons = !isSystemInDarkTheme()
@@ -56,7 +61,7 @@ fun SignInScreen() {
     val switchState by viewModel.switchState.collectAsStateWithLifecycle()
 
     Scaffold(
-        topBar = { AppBar(modifier = Modifier.fillMaxWidth()) { } }
+        topBar = { AppBar(modifier = Modifier.fillMaxWidth()) { navController.popBackStack() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier.padding(paddingValues),
@@ -106,7 +111,7 @@ fun SignInScreen() {
                         modifier = Modifier.weight(1f)
                     )
 
-                    TextButton(onClick = { }) {
+                    TextButton(onClick = { navController.navigate(FORGOT_PASSWORD) }) {
                         Text(
                             text = stringResource(R.string.forgot_password),
                             style = MaterialTheme.typography.bodyMedium,
@@ -132,7 +137,7 @@ fun SignInScreen() {
                         color = MaterialTheme.colorScheme.inversePrimary
                     )
 
-                    TextButton(onClick = { }) {
+                    TextButton(onClick = { navController.navigate(CREATE_ACCOUNT) }) {
                         Text(
                             text = stringResource(id = R.string.sign_up),
                             style = MaterialTheme.typography.bodyMedium,
@@ -148,7 +153,13 @@ fun SignInScreen() {
                 emailPasswordState = emailPasswordState,
                 switchState = switchState,
                 modifier = Modifier.fillMaxWidth(),
-                onButtonClick = { }
+                onButtonClick = {
+                    navController.navigate(NavDestinations.MAIN_APP) {
+                        popUpTo(NavDestinations.Auth.AUTH_MAIN) {
+                            inclusive = false
+                        }
+                    }
+                }
             )
 
         }
@@ -161,6 +172,6 @@ fun SignInScreen() {
 @Composable
 fun SignInScreenPreview() {
     SwiftPayTheme {
-        SignInScreen()
+        SignInScreen(rememberNavController())
     }
 }

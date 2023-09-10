@@ -21,6 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
 import com.example.swiftpay.ui.screens.common.AppBar
 import com.example.swiftpay.ui.screens.reset_password.components.ResetPasswordBottomButtonSection
@@ -31,7 +33,7 @@ import com.example.swiftpay.ui.theme.White
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
-fun ResetPasswordScreen() {
+fun ResetPasswordScreen(navController: NavController) {
 
     val systemUiController = rememberSystemUiController()
     val useDarkIcons = !isSystemInDarkTheme()
@@ -48,7 +50,7 @@ fun ResetPasswordScreen() {
     val emailState by resetPasswordViewModel.emailState.collectAsStateWithLifecycle()
 
     Scaffold(
-        topBar = { AppBar(modifier = Modifier.fillMaxWidth(), onBackClicked = { }) }
+        topBar = { AppBar(modifier = Modifier.fillMaxWidth(), onBackClicked = { navController.popBackStack() }) }
     ) { paddingValues ->
         Column(
             modifier = Modifier.padding(paddingValues),
@@ -101,6 +103,6 @@ fun ResetPasswordScreen() {
 @Composable
 fun ResetPasswordScreenPreview() {
     SwiftPayTheme {
-        ResetPasswordScreen()
+        ResetPasswordScreen(rememberNavController())
     }
 }

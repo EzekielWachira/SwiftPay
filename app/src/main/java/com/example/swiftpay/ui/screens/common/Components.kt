@@ -60,7 +60,7 @@ fun AppBar(modifier: Modifier = Modifier, onBackClicked: () -> Unit) {
             )
     ) {
 
-        IconButton(onClick = { onBackClicked }) {
+        IconButton(onClick = { onBackClicked() }) {
             Icon(
                 imageVector = Icons.Filled.ArrowBack, contentDescription = "Back arrow",
                 tint = MaterialTheme.colorScheme.inversePrimary
@@ -101,7 +101,7 @@ fun BottomButtonSection(modifier: Modifier = Modifier, text: String, emailPasswo
         ) {
 
             Button(
-                onClick = { onButtonClick },
+                onClick = { onButtonClick() },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp),
@@ -139,7 +139,7 @@ fun EmailSection(
         Text(
             text = stringResource(id = R.string.email),
             color = MaterialTheme.colorScheme.inversePrimary,
-            style = MaterialTheme.typography.labelMedium
+            style = MaterialTheme.typography.bodyMedium
         )
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -198,7 +198,7 @@ fun EnterEmailUserName(
                 ),
                 modifier = Modifier.weight(1f),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-                textStyle = MaterialTheme.typography.bodySmall
+                textStyle = MaterialTheme.typography.bodyMedium
             )
         }
     }
@@ -224,7 +224,7 @@ fun PasswordSection(
         Text(
             text = stringResource(id = R.string.password),
             color = MaterialTheme.colorScheme.inversePrimary,
-            style = MaterialTheme.typography.labelMedium
+            style = MaterialTheme.typography.bodyMedium
         )
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -308,7 +308,7 @@ fun EnterPassword(
                 },
                 visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 singleLine = true,
-                textStyle = MaterialTheme.typography.bodySmall
+                textStyle = MaterialTheme.typography.bodyMedium
             )
         }
     }

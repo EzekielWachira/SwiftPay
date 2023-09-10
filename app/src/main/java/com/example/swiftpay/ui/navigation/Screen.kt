@@ -1,6 +1,5 @@
 package com.example.swiftpay.ui.navigation
 
-import android.util.Config.PROFILE
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.example.swiftpay.R

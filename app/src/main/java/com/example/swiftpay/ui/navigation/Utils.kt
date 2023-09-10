@@ -11,6 +11,7 @@ val navigationScreens = listOf(
 
 object NavDestinations {
     const val MAIN = "main"
+    const val MAIN_APP = "main_app"
     const val SEND = "send"
     const val REQUEST = "request"
     const val TOP_UP = "top_up"
@@ -105,6 +106,19 @@ object NavDestinations {
         const val ADD_CONTACT_MAIN = "add_contact_main"
         const val ADD_CONTACT = "add_contact"
         const val CONTACT_DETAILS = "contact_details"
+    }
+
+    object Auth {
+        const val SPLASH = "splash"
+        const val SPLASH_MAIN = "splash_main"
+        const val AUTH_MAIN = "auth_main"
+        const val AUTH = "auth"
+        const val WALKTHROUGH = "walkthrough"
+        const val GET_STARTED = "get_started"
+        const val LOGIN = "login"
+        const val FORGOT_PASSWORD = "forgot_password"
+        const val CREATE_ACCOUNT = "create_account"
+        const val SIGNUP_STEPS = "signup_steps"
     }
 
 }

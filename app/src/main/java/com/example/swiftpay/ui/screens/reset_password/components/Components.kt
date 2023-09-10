@@ -89,7 +89,7 @@ fun ResetPasswordEmailSection(
         Text(
             text = stringResource(id = R.string.email),
             color = MaterialTheme.colorScheme.inversePrimary,
-            style = MaterialTheme.typography.labelMedium
+            style = MaterialTheme.typography.bodyMedium
         )
 
         Spacer(modifier = Modifier.height(10.dp))

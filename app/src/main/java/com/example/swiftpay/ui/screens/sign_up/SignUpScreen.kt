@@ -25,7 +25,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.navigation.NavDestinations.Auth.LOGIN
+import com.example.swiftpay.ui.navigation.NavDestinations.Auth.SIGNUP_STEPS
 import com.example.swiftpay.ui.screens.common.AppBar
 import com.example.swiftpay.ui.screens.common.BottomButtonSection
 import com.example.swiftpay.ui.screens.common.EmailSection
@@ -38,7 +42,7 @@ import com.example.swiftpay.ui.theme.White
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(navController: NavController) {
     val systemUiController = rememberSystemUiController()
     val useDarkIcons = !isSystemInDarkTheme()
 
@@ -56,7 +60,7 @@ fun SignUpScreen() {
     val switchState by viewModel.switchState.collectAsStateWithLifecycle()
 
     Scaffold(
-        topBar = { AppBar(modifier = Modifier.fillMaxWidth()) { } }
+        topBar = { AppBar(modifier = Modifier.fillMaxWidth()) { navController.popBackStack() } }
     ) { paddingValues ->
         Column(
             modifier = Modifier.padding(paddingValues),
@@ -124,7 +128,7 @@ fun SignUpScreen() {
                         color = MaterialTheme.colorScheme.inversePrimary
                     )
 
-                    TextButton(onClick = { }) {
+                    TextButton(onClick = { navController.navigate(LOGIN) }) {
                         Text(
                             text = stringResource(id = R.string.sign_in),
                             style = MaterialTheme.typography.bodyMedium,
@@ -140,7 +144,7 @@ fun SignUpScreen() {
                 emailPasswordState = emailPasswordState,
                 switchState = switchState,
                 modifier = Modifier.fillMaxWidth(),
-                onButtonClick = { }
+                onButtonClick = { navController.navigate(SIGNUP_STEPS) }
             )
         }
     }
@@ -151,6 +155,6 @@ fun SignUpScreen() {
 @Composable
 fun SignUpScreenPreview() {
     SwiftPayTheme {
-        SignUpScreen()
+        SignUpScreen(rememberNavController())
     }
 }

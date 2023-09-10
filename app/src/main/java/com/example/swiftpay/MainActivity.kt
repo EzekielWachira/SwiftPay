@@ -14,6 +14,7 @@ import com.example.swiftpay.ui.screens.main.MainScreen
 import com.example.swiftpay.ui.screens.reset_password.ResetPasswordScreen
 import com.example.swiftpay.ui.screens.sign_in.SignInScreen
 import com.example.swiftpay.ui.screens.sign_up_steps.SignUpStepsScreen
+import com.example.swiftpay.ui.screens.splash.SplashMain
 import com.example.swiftpay.ui.screens.splash.SplashScreen
 import com.example.swiftpay.ui.screens.walkthrough.GetStartedScreen
 import com.example.swiftpay.ui.screens.walkthrough.OnboardingScreen
@@ -26,27 +27,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             SwiftPayTheme {
-                // A surface container using the 'background' color from the theme
-//                OnboardingScreen()
-//                SignUpStepsScreen()
-                MainScreen()
+                SplashMain()
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    SwiftPayTheme {
-        Greeting("Android")
     }
 }

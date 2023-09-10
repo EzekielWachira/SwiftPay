@@ -151,7 +151,7 @@ fun EmailSection(
         Text(
             text = stringResource(id = R.string.full_name),
             color = MaterialTheme.colorScheme.inversePrimary,
-            style = MaterialTheme.typography.labelMedium
+            style = MaterialTheme.typography.bodyMedium
         )
 
         Spacer(modifier = Modifier.height(10.dp))

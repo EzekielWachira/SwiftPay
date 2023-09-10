@@ -1,6 +1,8 @@
 package com.example.swiftpay.ui.screens.splash
 
 import android.content.res.Configuration
+import android.os.Handler
+import android.os.Looper
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -17,6 +19,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -25,19 +32,29 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.ehsanmsz.mszprogressindicator.progressindicator.BallSpinFadeLoaderProgressIndicator
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.navigation.NavDestinations
+import com.example.swiftpay.ui.navigation.NavDestinations.Auth.WALKTHROUGH
+import com.example.swiftpay.ui.navigation.NavDestinations.MAIN
 import com.example.swiftpay.ui.theme.BlueGrey11
 import com.example.swiftpay.ui.theme.SwiftPayTheme
 import com.example.swiftpay.ui.theme.White
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
-fun SplashScreen() {
-    val navController = rememberNavController()
+fun SplashScreen(navController: NavController) {
     val systemUiController = rememberSystemUiController()
     val useDarkIcons = !isSystemInDarkTheme()
+    val coroutineScope = rememberCoroutineScope()
+
+    var isLoggedIn by rememberSaveable {
+        mutableStateOf(false)
+    }
 
     SideEffect {
         systemUiController.setSystemBarsColor(
@@ -45,6 +62,30 @@ fun SplashScreen() {
                 White else BlueGrey11,
             darkIcons = useDarkIcons
         )
+    }
+    
+    SideEffect {
+        coroutineScope.launch {
+            delay(3_000)
+            navController.navigate(
+                if (isLoggedIn) NavDestinations.MAIN_APP
+                else NavDestinations.Auth.AUTH
+            ) {
+                popUpTo(NavDestinations.Auth.SPLASH) {
+                    inclusive = true
+                }
+            }
+        }
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            navController.navigate(
+//                if (isLoggedIn) NavDestinations.MAIN_APP
+//                else NavDestinations.Auth.AUTH
+//            ) {
+//                popUpTo(NavDestinations.Auth.SPLASH) {
+//                    inclusive = true
+//                }
+//            }
+//        }, 3_000)
     }
 
     Surface(
@@ -95,6 +136,6 @@ fun SplashScreen() {
 @Composable
 fun SplashScreenPreview() {
     SwiftPayTheme {
-        SplashScreen()
+        SplashScreen(rememberNavController())
     }
 }

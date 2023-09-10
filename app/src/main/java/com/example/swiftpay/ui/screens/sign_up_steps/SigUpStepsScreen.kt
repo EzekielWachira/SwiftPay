@@ -38,6 +38,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.swiftpay.ui.screens.common.AppBar
 import com.example.swiftpay.ui.screens.sign_up_steps.components.AccountKindComponent
@@ -56,11 +57,10 @@ import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun SignUpStepsScreen() {
+fun SignUpStepsScreen(navController: NavController) {
 
     val systemUiController = rememberSystemUiController()
     val useDarkIcons = !isSystemInDarkTheme()
-    val navController = rememberNavController()
     val coroutineScope = rememberCoroutineScope()
 
     val viewModel: SignUpStepsViewModel = hiltViewModel()
@@ -132,7 +132,9 @@ fun SignUpStepsScreen() {
 
 
     Scaffold(
-        topBar = { AppBarWithProgress(progressState = progressState) }
+        topBar = { AppBarWithProgress(progressState = progressState) {
+            navController.popBackStack()
+        } }
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -234,12 +236,13 @@ fun StagePager(
 @Composable
 fun SignUpStepsScreenPreview() {
     SwiftPayTheme {
-        SignUpStepsScreen()
+        SignUpStepsScreen(rememberNavController())
     }
 }
 
 @Composable
-fun AppBarWithProgress(modifier: Modifier = Modifier, progressState: ProgressState) {
+fun AppBarWithProgress(modifier: Modifier = Modifier, progressState: ProgressState,
+                       onBackClicked: () -> Unit) {
     val progress by animateFloatAsState(
         targetValue = progressState.progress, label = "",
         animationSpec = tween(durationMillis = 1500, easing = FastOutSlowInEasing)
@@ -248,7 +251,7 @@ fun AppBarWithProgress(modifier: Modifier = Modifier, progressState: ProgressSta
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
     ) {
-        AppBar(onBackClicked = { })
+        AppBar(onBackClicked = onBackClicked)
         LinearProgressIndicator(
             modifier = Modifier
                 .weight(.2f)
@@ -267,6 +270,6 @@ fun AppBarWithProgress(modifier: Modifier = Modifier, progressState: ProgressSta
 @Composable
 fun AppBarWithProgressPreview() {
     SwiftPayTheme {
-        AppBarWithProgress(progressState = ProgressState())
+        AppBarWithProgress(progressState = ProgressState()){}
     }
 }
