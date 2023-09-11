@@ -77,7 +77,8 @@ fun SendToScreen(navController: NavController) {
 
     SideEffect {
         systemUiController.setSystemBarsColor(
-            color = Green67,
+            color = if (useDarkIcons)
+                White else BlueGrey11,
             darkIcons = useDarkIcons
         )
 
