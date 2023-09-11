@@ -37,6 +37,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/EzekielWachira/SwiftPay/blob/main/screenshots/thumbnail.png)
+![Thumbnail](/screenshots/thumbnail.png)
 
 A Money Transfer UI designed fully with Jetpack Compose
