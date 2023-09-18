@@ -328,7 +328,48 @@ fun ChartComponent(
                     colors = BarChartColors(
                         grid = MaterialTheme.colorScheme.background,
                         surface = MaterialTheme.colorScheme.background,
-                    )
+                    ),
+                    xAxisLabel = {
+                        Text(
+                            text = it as String, color = MaterialTheme.colorScheme.inversePrimary,
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    },
+                    yAxisLabel = {
+                        Text(
+                            text = (it as Float).toString(),
+                            color = MaterialTheme.colorScheme.inversePrimary,
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    },
+                    overlayDataEntryLabel = { xAxisLabel, value ->
+                        Box(
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(DpDimensions.Small))
+                                .background(MaterialTheme.colorScheme.inverseSurface)
+                        ) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.padding(
+                                    horizontal = DpDimensions.Normal,
+                                    vertical = DpDimensions.Small
+                                )
+                            ) {
+                                Text(
+                                    text = xAxisLabel,
+                                    color = MaterialTheme.colorScheme.inversePrimary,
+                                    style = MaterialTheme.typography.bodySmall
+                                )
+                                Spacer(modifier = Modifier.width(DpDimensions.Smallest))
+                                Text(
+                                    text = (value as Float).toString(),
+                                    color = MaterialTheme.colorScheme.inversePrimary,
+                                    style = MaterialTheme.typography.titleSmall
+                                )
+                            }
+                        }
+                    }
                 )
             }
 
