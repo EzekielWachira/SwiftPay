@@ -5,12 +5,15 @@ import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -24,14 +27,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.PopupProperties
 import com.example.swiftpay.R
+import com.example.swiftpay.ui.screens.contacts.components.showToast
 import com.example.swiftpay.ui.theme.DpDimensions
+import com.example.swiftpay.ui.theme.SwiftPayTheme
 
 @Composable
 fun InsightsAppBar(
@@ -93,34 +101,50 @@ fun InsightsAppBar(
                     enter = slideInVertically(initialOffsetY = { it }),
                     exit = slideOutVertically(targetOffsetY = { it })
                 ) {
-                    DropdownMenu(
-                        expanded = expanded,
-                        onDismissRequest = { expanded = false },
-                        modifier = Modifier.background(MaterialTheme.colorScheme.background)
-                    ) {
-                        DropdownMenuItem(text = {
-                            Text(
-                                text = "Menu Item 1",
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.inversePrimary
-                            )
-                        }, onClick = { context.showToast("Menu Item 1") })
+                    MaterialTheme(shapes = MaterialTheme.shapes.copy(extraSmall = RoundedCornerShape(DpDimensions.Small))) {
 
-                        DropdownMenuItem(text = {
-                            Text(
-                                text = "Menu Item 2",
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.inversePrimary
-                            )
-                        }, onClick = { context.showToast("Menu Item 2") })
+                        DropdownMenu(
+                            expanded = expanded,
+                            onDismissRequest = { expanded = false },
+                            modifier = Modifier
+                                .background(
+                                    MaterialTheme.colorScheme.background,
+                                    RoundedCornerShape(DpDimensions.Small)
+                                )
+                                .border(
+                                    BorderStroke(
+                                        width = 1.dp,
+                                        color = MaterialTheme.colorScheme.inverseSurface,
+                                    ),
+                                    RoundedCornerShape(DpDimensions.Small)
+                                )
+                                ,
 
-                        DropdownMenuItem(text = {
-                            Text(
-                                text = "Menu Item 3",
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.inversePrimary
-                            )
-                        }, onClick = { context.showToast("Menu Item 3") })
+                            ) {
+                            DropdownMenuItem(text = {
+                                Text(
+                                    text = "Menu Item 1",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.inversePrimary
+                                )
+                            }, onClick = { context.showToast("Menu Item 1") })
+
+                            DropdownMenuItem(text = {
+                                Text(
+                                    text = "Menu Item 2",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.inversePrimary
+                                )
+                            }, onClick = { context.showToast("Menu Item 2") })
+
+                            DropdownMenuItem(text = {
+                                Text(
+                                    text = "Menu Item 3",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.inversePrimary
+                                )
+                            }, onClick = { context.showToast("Menu Item 3") })
+                        }
                     }
                 }
             }

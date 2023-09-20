@@ -34,6 +34,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import com.carlosgub.kotlinm.charts.ChartAnimation
 import com.carlosgub.kotlinm.charts.bar.BarChart
@@ -243,58 +244,87 @@ fun ChartComponent(
                         enter = slideInVertically(initialOffsetY = { it }),
                         exit = slideOutVertically(targetOffsetY = { it })
                     ) {
-                        DropdownMenu(
-                            expanded = expanded,
-                            onDismissRequest = { expanded = false },
-                            modifier = Modifier.background(MaterialTheme.colorScheme.background)
-                        ) {
-                            DropdownMenuItem(text = {
-                                Text(
-                                    text = "Menu Item 1",
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.inversePrimary
+                        MaterialTheme(shapes = MaterialTheme.shapes.copy(extraSmall = RoundedCornerShape(DpDimensions.Small))) {
+                            DropdownMenu(
+                                expanded = expanded,
+                                onDismissRequest = { expanded = false },
+                                modifier = Modifier .background(
+                                    MaterialTheme.colorScheme.background,
+                                    RoundedCornerShape(DpDimensions.Small)
                                 )
-                            }, onClick = { context.showToast("Menu Item 1") })
+                                    .border(
+                                        BorderStroke(
+                                            width = 1.dp,
+                                            color = MaterialTheme.colorScheme.inverseSurface,
+                                        ),
+                                        RoundedCornerShape(DpDimensions.Small)
+                                    ),
+                                offset = DpOffset(y = DpDimensions.Small, x = 0.dp)
+                            ) {
+                                DropdownMenuItem(text = {
+                                    Text(
+                                        text = "Today",
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.inversePrimary
+                                    )
+                                }, onClick = { context.showToast("Today") })
 
-                            DropdownMenuItem(text = {
-                                Text(
-                                    text = "Menu Item 2",
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.inversePrimary
-                                )
-                            }, onClick = { context.showToast("Menu Item 2") })
+                                DropdownMenuItem(text = {
+                                    Text(
+                                        text = "Last 7 days",
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.inversePrimary
+                                    )
+                                }, onClick = { context.showToast("Last 7 days") })
 
-                            DropdownMenuItem(text = {
-                                Text(
-                                    text = "Menu Item 3",
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.inversePrimary
-                                )
-                            }, onClick = { context.showToast("Menu Item 3") })
+                                DropdownMenuItem(text = {
+                                    Text(
+                                        text = "Last month",
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.inversePrimary
+                                    )
+                                }, onClick = { context.showToast("Last month") })
 
-                            DropdownMenuItem(text = {
-                                Text(
-                                    text = "Menu Item 4",
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.inversePrimary
-                                )
-                            }, onClick = { context.showToast("Menu Item 4") })
+                                DropdownMenuItem(text = {
+                                    Text(
+                                        text = "Last 3 months",
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.inversePrimary
+                                    )
+                                }, onClick = { context.showToast("last 3 months") })
 
-                            DropdownMenuItem(text = {
-                                Text(
-                                    text = "Menu Item 5",
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.inversePrimary
-                                )
-                            }, onClick = { context.showToast("Menu Item 5") })
+                                DropdownMenuItem(text = {
+                                    Text(
+                                        text = "This year",
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.inversePrimary
+                                    )
+                                }, onClick = { context.showToast("This year") })
 
-                            DropdownMenuItem(text = {
-                                Text(
-                                    text = "Menu Item 6",
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.inversePrimary
-                                )
-                            }, onClick = { context.showToast("Menu Item 6") })
+                                DropdownMenuItem(text = {
+                                    Text(
+                                        text = "Last year",
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.inversePrimary
+                                    )
+                                }, onClick = { context.showToast("Last year") })
+
+                                DropdownMenuItem(text = {
+                                    Text(
+                                        text = "All time",
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.inversePrimary
+                                    )
+                                }, onClick = { context.showToast("All time") })
+
+                                DropdownMenuItem(text = {
+                                    Text(
+                                        text = "Custom range...",
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.inversePrimary
+                                    )
+                                }, onClick = { context.showToast("custom range") })
+                            }
                         }
                     }
 
