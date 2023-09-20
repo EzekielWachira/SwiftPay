@@ -128,4 +128,11 @@
     <string name="contact">Contact</string>
     <string name="yes_delete">Yes, Delete</string>
     <string name="yes_logout">Yes, Logout</string>
+    <string name="number_of_transactions">Number of Transactions</string>
+    <string name="income">Income</string>
+    <string name="sent">Sent</string>
+    <string name="request">Request</string>
+    <string name="top_up">Top Up</string>
+    <string name="withdrawn">Withdrawn</string>
+    <string name="all">All</string>
 </resources>

@@ -27,9 +27,12 @@ import com.example.swiftpay.ui.navigation.Screen
 import com.example.swiftpay.ui.screens.insights.components.ChartComponent
 import com.example.swiftpay.ui.screens.insights.components.ExpenditureItem
 import com.example.swiftpay.ui.screens.insights.components.InsightsAppBar
+import com.example.swiftpay.ui.screens.insights.components.TransactionsNoComponent
 import com.example.swiftpay.ui.screens.main.components.MainTopBar
 import com.example.swiftpay.ui.theme.BlueGrey11
 import com.example.swiftpay.ui.theme.DpDimensions
+import com.example.swiftpay.ui.theme.Green67
+import com.example.swiftpay.ui.theme.Red65
 import com.example.swiftpay.ui.theme.SwiftPayTheme
 import com.example.swiftpay.ui.theme.White
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
@@ -73,14 +76,26 @@ fun InsightsScreen(navController: NavController) {
             ) {
 
                 ExpenditureItem(modifier = Modifier
-                    .weight(1f)
-                    .height(130.dp))
+                    .weight(1f),
+                    title = "Income",
+                    lineColor = Green67,
+                    value = "$3,345.34"
+                    )
 
                 ExpenditureItem(modifier = Modifier
-                    .weight(1f)
-                    .height(130.dp))
+                    .weight(1f),
+                    title = "Expense",
+                    lineColor = Red65,
+                    value = "$1,345.34"
+                    )
 
             }
+
+            Spacer(modifier = Modifier.height(DpDimensions.Normal))
+
+            TransactionsNoComponent(modifier = Modifier.fillMaxWidth())
+
+            Spacer(modifier = Modifier.height(DpDimensions.Dp20))
 
         }
     }
